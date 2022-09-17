@@ -49,15 +49,20 @@ class GameView():
 
 
     def sterowanie(self):
+        print(self.map_y)
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
-            self.map_x+=1
+            if self.map_x<0: self.map_x+=1
+
         if pressed_keys[pygame.K_RIGHT]:
-            self.map_x-=1
+            if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=1
+
+
         if pressed_keys[pygame.K_UP]:
-            self.map_y+=1
+            if self.map_y<0: self.map_y+=1
+
         if pressed_keys[pygame.K_DOWN]:
-            self.map_y-=1
+            if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=1
 
 def main():
     GameView().game_loop()

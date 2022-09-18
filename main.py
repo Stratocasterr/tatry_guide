@@ -47,23 +47,24 @@ class GameView():
             
             if event.type == pygame.QUIT:
                 self.game_is_running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
 
     def sterowanie(self):
-        print(self.map_y)
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
-            if self.map_x<0: self.map_x+=1
+            if self.map_x<0: self.map_x+=50
 
         if pressed_keys[pygame.K_RIGHT]:
-            if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=1
+            if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=50
 
 
         if pressed_keys[pygame.K_UP]:
-            if self.map_y<0: self.map_y+=1
+            if self.map_y<0: self.map_y+=50
 
         if pressed_keys[pygame.K_DOWN]:
-            if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=1
+            if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=50
 
 def main():
     GameView().game_loop()

@@ -12,7 +12,7 @@ CLOCK = pygame.time.Clock()
 class GameView():
     def __init__(self):
         self.game_is_running = True
-        self.points=points
+        self.points=[]
         
         self.map_x=0
         self.map_y=0
@@ -24,6 +24,7 @@ class GameView():
             self.game_draw()
             self.handle_events()
             self.sterowanie()
+            self.points=add_point(self.map_x, self.map_y)
            
 
     def game_draw(self):
@@ -66,10 +67,7 @@ class GameView():
 
 def main():
     GameView().game_loop()
-    print(LT_MAP_SIZE)
-    print(LB_MAP_SIZE)
-    print(RT_MAP_SIZE)
-    print(RB_MAP_SIZE)
+    
 
 if __name__ == "__main__":
     main()

@@ -19,15 +19,14 @@ class Point:
 
 
 
-point1=Point(100,100,5,RED)
-point2=Point(400,900,10,RED)
-point3=Point(600,300,10,RED)
-
-points=[
-    Point(100,100,5,RED),  # SCHRONISKO MORSKIE OKO
-    Point(200,200,5,RED),  # MOLO MORSKIE OKO
-    Point(400,300,5,RED),  #
-    Point(400,400,5,RED),  #
-    Point(600,900,5,RED)   #
-]
-
+def add_point(offset_x, offset_y):
+    points=[
+        #Point(300+offset_x,100+offset_y,5,RED),  # SCHRONISKO MORSKIE OKO
+        Point(548+offset_x,32+offset_y,5,RED),  # KASPROWY WIERCH 
+        Point(570+offset_x,60+offset_y,5,RED),  # SUCHA PRZEŁĘCZ 
+        Point(647+offset_x,115+offset_y,5,RED),  # BESKID
+        Point(715+offset_x,200+offset_y,5,RED),  # LILIOWE
+        Point(847+offset_x,284+offset_y,5,RED),  # SKRAJNA PRZEŁĘCZ
+       
+    ]
+    return points

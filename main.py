@@ -13,7 +13,6 @@ class GameView():
     def __init__(self):
         self.game_is_running = True
         self.points=[]
-        
         self.map_x=0
         self.map_y=0
 
@@ -23,7 +22,7 @@ class GameView():
         while self.game_is_running:
             self.game_draw()
             self.handle_events()
-            self.sterowanie()
+           # self.sterowanie()
             self.points=add_point(self.map_x, self.map_y)
            
 
@@ -51,20 +50,38 @@ class GameView():
                 print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
 
+            if event.type==pygame.KEYDOWN:
+                pressed_keys = pygame.key.get_pressed()
+                if pressed_keys[pygame.K_LEFT]:
+                    if self.map_x<0: self.map_x+=100
+
+                if pressed_keys[pygame.K_RIGHT]:
+                    if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=100
+
+
+                if pressed_keys[pygame.K_UP]:
+                    if self.map_y<0: self.map_y+=100
+
+                if pressed_keys[pygame.K_DOWN]:
+                    if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=100
+
+
+
     def sterowanie(self):
+        
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
             if self.map_x<0: self.map_x+=50
 
         if pressed_keys[pygame.K_RIGHT]:
-            if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=50
+            if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=10
 
 
         if pressed_keys[pygame.K_UP]:
             if self.map_y<0: self.map_y+=50
 
         if pressed_keys[pygame.K_DOWN]:
-            if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=50
+            if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=10
 
 def main():
     GameView().game_loop()

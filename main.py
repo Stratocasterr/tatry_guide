@@ -15,11 +15,14 @@ class GameView():
         self.map_x = 0
         self.map_y = 0
         self.append_tools = True
+
+        # windows 
         self.buttons = []
+        self.actual_window = 'sidebar'
        
     def generate_tools(self):
         if self.append_tools:
-           self.buttons = Window().add_buttons()
+           self.buttons = Window(self.actual_window).add_buttons()
         self.append_tools = False
 
 
@@ -42,13 +45,32 @@ class GameView():
         for point in self.points:
             point.draw_me()
 
-        Window().draw_me()
+        
+        
+        Window(self.actual_window).draw_me()
+
+        
+        print(self.buttons)
         for button in self.buttons:
-            if len(button) == 1:  button[0].draw_the_button()
+            
+            if button[0].active_button:
+                
+                
+                if button[2] == 'show_side_menu_button':
+                    print("ss")
+                    self.actual_window = 'side menu'
+                    self.append_tools = True
+                elif button[2] == 'hide_side_menu_button':
+                    self.actual_window = 'sidebar'
+                    self.append_tools = True
+                    print("bb")
+                
+            if len(button) == 2: button[0].draw_the_button()
             else:  
                 button[0].draw_the_button()
                 button[1].draw_me()
 
+        
         pygame.display.update()
 
 
@@ -59,7 +81,8 @@ class GameView():
             if event.type == pygame.QUIT:
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                pass
+                #print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             ''' 
             if event.type==pygame.KEYDOWN:

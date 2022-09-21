@@ -127,9 +127,26 @@ class Window:
                 MENU_GREEN,
                 WHITE,
                 SKY_BLUE
+                
             )
 
             buttons.append([from_button,'from_button'])
+
+            # clear from
+
+            clear_from_button = Button(
+                4.8 * self.triangle_size,
+                self.margin + 2.3* self.triangle_size,
+                0.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'X',
+                WHITE,
+                RED,
+                SKY_BLUE
+                
+            )
+
+            buttons.append([clear_from_button,'clear_from_button'])
 
             # to
             to_button = Button(
@@ -141,9 +158,26 @@ class Window:
                 MENU_GREEN,
                 WHITE,
                 SKY_BLUE
+                
             )
 
             buttons.append([to_button,'to_button'])
+
+            # clear to
+
+            clear_to_button = Button(
+                4.8 * self.triangle_size,
+                self.margin + 3.3* self.triangle_size,
+                0.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'X',
+                WHITE,
+                RED,
+                SKY_BLUE
+                
+            )
+
+            buttons.append([clear_to_button,'clear_to_button'])
 
             # search
             search_button = Button(
@@ -155,6 +189,7 @@ class Window:
                 MENU_GREEN,
                 WHITE,
                 SKY_BLUE
+                
             )
 
             buttons.append([search_button,'search_button'])

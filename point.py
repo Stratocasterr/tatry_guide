@@ -224,39 +224,39 @@ def add_point(offset_x, offset_y):
         Point(1107+offset_x,9+offset_y,5,BLACK,'SCZ2e'),
         
         #SZLAK NIEBIESKI PRZY CZARNYM STAWIE GĄSIENNICOWYM
-        Point(1155+offset_x,5+offset_y,5,BLUE,'SNB1'),
-        Point(1192+offset_x,3+offset_y,5,BLUE,'SNB1'),
-        Point(1214+offset_x,65+offset_y,5,BLUE,'SNB1'),
-        Point(1257+offset_x,129+offset_y,5,BLUE,'SNB1'),
-        Point(1248+offset_x,195+offset_y,5,BLUE,'SNB1'),
-        Point(1220+offset_x,236+offset_y,5,BLUE,'SNB1'),
-        Point(1196+offset_x,273+offset_y,5,BLUE,'SNB1'),
-        Point(1164+offset_x,333+offset_y,5,BLUE,'SNB1'),
+        Point(1155+offset_x,5+offset_y,5,BLUE,'SNB1a'),
+        Point(1192+offset_x,3+offset_y,5,BLUE,'SNB1b'),
+        Point(1214+offset_x,65+offset_y,5,BLUE,'SNB1c'),
+        Point(1257+offset_x,129+offset_y,5,BLUE,'SNB1d'),
+        Point(1248+offset_x,195+offset_y,5,BLUE,'SNB1e'),
+        Point(1220+offset_x,236+offset_y,5,BLUE,'SNB1f'),
+        Point(1196+offset_x,273+offset_y,5,BLUE,'SNB1g'),
+        Point(1164+offset_x,333+offset_y,5,BLUE,'SNB1h'),
 
         #SZLAK ZIELONY NA PÓŁNOC OD KOZIEGO WIERCHU
 
-        Point(1281+offset_x,249+offset_y,5,GREEN,'SZ2'),
-        Point(1329+offset_x,287+offset_y,5,GREEN,'SZ2'),
-        Point(1364+offset_x,255+offset_y,5,GREEN,'SZ2'),
-        Point(1390+offset_x,217+offset_y,5,GREEN,'SZ2'),
+        Point(1281+offset_x,249+offset_y,5,GREEN,'SZ2a'),
+        Point(1329+offset_x,287+offset_y,5,GREEN,'SZ2b'),
+        Point(1364+offset_x,255+offset_y,5,GREEN,'SZ2c'),
+        Point(1390+offset_x,217+offset_y,5,GREEN,'SZ2d'),
 
         # SZLAK CZARNY KOZIA DOLINKA
-        Point(1359+offset_x,303+offset_y,5,BLACK,'SCZ3'),
-        Point(1416+offset_x,320+offset_y,5,BLACK,'SCZ3'),
+        Point(1359+offset_x,303+offset_y,5,BLACK,'SCZ3a'),
+        Point(1416+offset_x,320+offset_y,5,BLACK,'SCZ3b'),
 
         #SZLAK ŻÓŁTY PRZY PAŃSZCZYŃSKIEJ PRZEŁĘCZY
 
-        Point(1247+offset_x,60+offset_y,5,ORANGE,'SZO1'),
-        Point(1314+offset_x,98+offset_y,5,ORANGE,'SZO1'),
-        Point(1354+offset_x,111+offset_y,5,ORANGE,'SZO1'),
-        Point(1373+offset_x,137+offset_y,5,ORANGE,'SZO1'),
-        Point(1413+offset_x,144+offset_y,5,ORANGE,'SZO1'),
+        Point(1247+offset_x,60+offset_y,5,ORANGE,'SZO1a'),
+        Point(1314+offset_x,98+offset_y,5,ORANGE,'SZO1b'),
+        Point(1354+offset_x,111+offset_y,5,ORANGE,'SZO1c'),
+        Point(1373+offset_x,137+offset_y,5,ORANGE,'SZO1d'),
+        Point(1413+offset_x,144+offset_y,5,ORANGE,'SZO1e'),
 
         #SZLAK ŻÓŁTY PRZY ZMARZŁEJ PRZEŁĘCZY
 
-        Point(1291+offset_x,322+offset_y,5,ORANGE,'SZO2'),
-        Point(1278+offset_x,272+offset_y,5,ORANGE,'SZO2'),
-        Point(1250+offset_x,204+offset_y,5,ORANGE,'SZO2'),
+        Point(1291+offset_x,322+offset_y,5,ORANGE,'SZO2a'),
+        Point(1278+offset_x,272+offset_y,5,ORANGE,'SZO2b'),
+        Point(1250+offset_x,204+offset_y,5,ORANGE,'SZO2c'),
         
 
     ]
@@ -266,15 +266,46 @@ def add_point(offset_x, offset_y):
 
 
 def get_points_names(points):
-    answer =[]
+    answer = []
+    
+    name = ''
     for point in points:
         if not (any(char.isdigit() for char in point.name)):
-            answer.append(point.name)
+           
+            for letter in point.name:
+                if letter == "Ż": name += 'z'
+                elif letter == "Ń": name += 'n'
+                elif letter == "Ó": name += 'o'
+                elif letter == "Ś": name += 's'
+                elif letter == "Ć": name += 'c'
+                elif letter == "Ą": name += 'a'
+                elif letter == "Ę": name += 'e'
+                elif letter == "Ł": name += 'l'
+                elif letter == "Ź": name += 'z'
+                else : name += letter
+            name = name.lower()
+            
+            answer.append(name)
+            name = ''
     return answer
 
 def find_point(point_name, points):
     for point in points:
         if point.name == point_name:
             return [point.x, point.y]
+
+# input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
+def draw_the_line(points):
+    for i in range(len(points)):
+        if i < len(points) - 2:
+            pygame.draw.line(WIN, RED, points[i], points[i+1], 8)
+
+
+def find_name(points_names, input_name):
+    suggestions = []
+    if len(input_name) > 0:
+        for point in points_names:
+            if point[:len(input_name)] == input_name: suggestions.append(point)
+    return suggestions
 
 

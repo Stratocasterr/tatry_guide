@@ -17,6 +17,9 @@ class Button:
         self.active_button = False
         self.rect = pygame.Rect(self.x, self.y, self.length, self.height)
 
+        self.allow = False
+        
+
     def draw_the_button(self):
         self.active_button = False
         color = self.button_press()
@@ -30,11 +33,12 @@ class Button:
         
 
     def button_press(self):
-
+        collide_color = WHITE
         color = self.text_backing_color
         if self.rect.collidepoint(pygame.mouse.get_pos()):
             if not pygame.mouse.get_pressed()[0]:
-                pygame.draw.rect(WIN, WHITE,
+                if self.text_backing_color == WHITE: collide_color = SKY_BLUE
+                pygame.draw.rect(WIN, collide_color,
                                  pygame.Rect(self.x + 2, self.y + 2, self.length, self.height), 2)
 
             else:
@@ -45,7 +49,6 @@ class Button:
 
     def change_color(self, new_color):
         self.text_backing_color = new_color
-
 
     
 

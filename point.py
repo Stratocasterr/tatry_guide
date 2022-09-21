@@ -94,6 +94,9 @@ def add_point(offset_x, offset_y):
         Point(1434+offset_x,156+offset_y,5,RED,'SKRAJNY GRANAT'),                                 # SKRAJNY GRANAT
         Point(1238+offset_x,244+offset_y,5,RED,'ZMARZŁY STAW'),                                   # ZMARZŁY STAW
         Point(1163+offset_x,108+offset_y,5,RED,'CZARNY STAW GĄSIENNICOWY'),                       # CZARNY STAW GĄSIENNICOWY
+        
+        
+        
         Point(1209+offset_x,472+offset_y,5,RED,'KOŁOWA CZUBA'),                                   # KOŁOWA CZUBA
         Point(1084+offset_x,568+offset_y,5,RED,'ZADNI STAW POLSKI'),                              # ZADNI STAW POLSKI
         Point(1117+offset_x,607+offset_y,5,RED,'WOLE OKO'),                                       # WOLE OKO
@@ -158,7 +161,9 @@ def add_point(offset_x, offset_y):
         Point(883+500+offset_x,66+offset_y,5,RED,'ŻÓŁTA PRZEŁĘCZ'),                               # ŻÓŁTA PRZEŁĘCZ
         Point(911+500+offset_x,105+offset_y,5,RED,'WIERCH POD FAJKI'),                            # WIERCH POD FAJKI
         Point(918+500+offset_x,111+offset_y,5,RED,'PAŃSZCZYŃSKA PRZEŁĘCZ'),                       # PAŃSZCZYŃSKA PRZEŁĘCZ
-        Point(958+500+offset_x,155+offset_y,5,RED,'SKRAJNY GRANAT'),                              # SKRAJNY GRANAT
+        
+        
+        Point(958+500+offset_x,155+offset_y,5,RED,'GRANACKA PRZEŁĘCZ'),                              # SKRAJNY GRANAT
         Point(1022+500+offset_x,152+offset_y,5,RED,'KOŁOWA CZUBA'),                               # KOŁOWA CZUBA
         Point(1054+500+offset_x,149+offset_y,5,RED,'WIELKA BUCZYNOWA TURNIA'),                    # WIELKA BUCZYNOWA TURNIA
         Point(1100+500+offset_x,146+offset_y,5,RED,'MAŁA BUCZYNOWA'),                             # MAŁA BUCZYNOWA

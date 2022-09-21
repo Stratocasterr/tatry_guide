@@ -107,7 +107,7 @@ class GameView():
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
-                # print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             if event.type == pygame.KEYDOWN:
 

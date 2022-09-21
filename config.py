@@ -2,6 +2,9 @@ import pygame
 SCREEN_HEIGHT = 900
 SCREEN_LENGTH = 1700
 
+# text staff
+pygame.font.init()
+BASIC_FONT = pygame.font.Font('fonts/freesansbold.ttf', 10)
 
 WIN = pygame.display.set_mode((SCREEN_LENGTH, SCREEN_HEIGHT))
 
@@ -16,3 +19,16 @@ RT_MAP_SIZE=[RT_MAP.get_width(),RT_MAP.get_height()]
 
 RB_MAP=pygame.image.load('images/mapRB.jpg')
 RB_MAP_SIZE=[RB_MAP.get_width(),RB_MAP.get_height()]
+
+TATRY_GUIDE_LOGO = pygame.image.load('images/tatryguide_logo.jpg')
+TATRY_GUIDE_LOGO = pygame.transform.scale(TATRY_GUIDE_LOGO, (257, 177))
+
+SAVE_TATRY = pygame.image.load('images/savetatry.png')
+SAVE_TATRY = pygame.transform.scale(SAVE_TATRY,(101, 20))
+
+FIND_YOUR_WAY = pygame.image.load('images/findyourway.png')
+FROM = pygame.image.load('images/from.png')
+TO = pygame.image.load('images/to.png')
+
+SEARCH = pygame.image.load('images/search.png')
+SEARCH = pygame.transform.scale(SEARCH, (70, 30))

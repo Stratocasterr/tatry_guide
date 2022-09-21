@@ -32,36 +32,40 @@ class GameView():
             self.handle_events()
             self.sterowanie()
             self.points = add_point(self.map_x, self.map_y)
-            self.map_x, self.map_y = find_point("RYSY", self.points)[0], find_point("RYSY", self.points)[1] 
+           
             self.generate_tools()
             
            
 
     def game_draw(self):
+        # draw map
+        
         WIN.blit(LT_MAP,(self.map_x,self.map_y))
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
+
         print(self.map_x, self.map_y)
+
+        # draw points
+
         for point in self.points:
             point.draw_me()
 
-        
+        # draw actual window
         
         Window(self.actual_window).draw_me()
 
-        
+        # draw actual window's buttons
         
         for button in self.buttons:
-            
             if button[0].active_button:
                 
-                
-                if button[2] == 'show_side_menu_button':
-            
+                if button[1] == 'show_side_menu_button':
                     self.actual_window = 'side menu'
                     self.append_tools = True
-                elif button[2] == 'hide_side_menu_button':
+
+                elif button[1] == 'hide_side_menu_button':
                     self.actual_window = 'sidebar'
                     self.append_tools = True
                    
@@ -69,7 +73,7 @@ class GameView():
             if len(button) == 2: button[0].draw_the_button()
             else:  
                 button[0].draw_the_button()
-                button[1].draw_me()
+                button[2].draw_me()
 
         
         pygame.display.update()

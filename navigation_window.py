@@ -1,4 +1,4 @@
-from re import S
+from re import S, search
 import pygame
 from colors import *
 from config import *
@@ -49,6 +49,7 @@ class Window:
                 6 * self.triangle_size, 
             SCREEN_HEIGHT - (2 * self.margin )))
 
+            # main menu area
             pygame.draw.polygon(WIN, MENU_GREEN, [
                 (self.x +  6 * self.triangle_size, self.margin + self.y),
                 (self.x +  6 * self.triangle_size, self.margin + self.y + self.triangle_size),
@@ -66,6 +67,15 @@ class Window:
                 self.margin + self.y + self.triangle_size, 
                 self.triangle_size + 1, SCREEN_HEIGHT - (2 * self.margin + 2 * self.triangle_size)))
 
+            # put images
+
+            WIN.blit(TATRY_GUIDE_LOGO,(0.75 * self.triangle_size, (SCREEN_HEIGHT - 3 * self.margin) ))
+            # WIN.blit(SAVE_TATRY,(2.3 * self.triangle_size, (SCREEN_HEIGHT  - 5 * self.margin // 4 )))
+            WIN.blit(FIND_YOUR_WAY,(0.9 * self.triangle_size, self.margin + 0.5 * self.triangle_size))
+            WIN.blit(FROM,(0.2 * self.triangle_size, 4 * self.triangle_size))
+            WIN.blit(TO,(0.45 * self.triangle_size, 5.2 * self.triangle_size))
+            WIN.blit(SEARCH,(0.45 * self.triangle_size, 6.2 * self.triangle_size))
+
 
     def add_buttons(self):
         buttons = []
@@ -75,7 +85,7 @@ class Window:
             show_side_menu_button = Button(
                 self.triangle_size / 2, (SCREEN_HEIGHT - (-0.5 * self.triangle_size + self.margin)) / 2,
                 3* self.triangle_size // 7, 
-                self.triangle_size, 'hehe', BLACK, SKY_BLUE, BLUE)
+                self.triangle_size, '', BLACK, SKY_BLUE, BLUE)
 
             show_side_menu_button_arrow_icon = Icon(
                 [
@@ -84,15 +94,17 @@ class Window:
                     (self.triangle_size/2 + 3 * self.triangle_size // 10, (SCREEN_HEIGHT - (-0.5 * self.triangle_size + self.margin)) / 2 + self.triangle_size // 2)
             ],
             'triangle', 0, MENU_GREEN)
-            buttons.append([show_side_menu_button, show_side_menu_button_arrow_icon, 'show_side_menu_button'])
+            buttons.append([show_side_menu_button,'show_side_menu_button', show_side_menu_button_arrow_icon])
             
 
         elif self.actual_window == 'side menu':
+
+            # hide menu
            
             hide_side_menu_button = Button(
                 self.triangle_size / 2 +  6 * self.triangle_size, 
                 (SCREEN_HEIGHT - (-0.5 * self.triangle_size + self.margin)) / 2, 
-                3* self.triangle_size // 7 , self.triangle_size, 'hehe', BLACK, SKY_BLUE, BLUE)
+                3* self.triangle_size // 7 , self.triangle_size, '', BLACK, SKY_BLUE, BLUE)
             
             hide_side_menu_button_arrow_icon = Icon(
                 [
@@ -102,7 +114,50 @@ class Window:
             ],
             'triangle', 0, MENU_GREEN)
             
-            buttons.append([hide_side_menu_button, hide_side_menu_button_arrow_icon, 'hide_side_menu_button'])
+            buttons.append([hide_side_menu_button, 'hide_side_menu_button', hide_side_menu_button_arrow_icon])
+
+            # from
+
+            from_button = Button(
+                2.2 * self.triangle_size,
+                self.margin + 2.3* self.triangle_size,
+                2.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                '...',
+                MENU_GREEN,
+                WHITE,
+                SKY_BLUE
+            )
+
+            buttons.append([from_button,'from_button'])
+
+            # to
+            to_button = Button(
+                2.2 * self.triangle_size,
+                self.margin + 3.3* self.triangle_size,
+                2.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                '...',
+                MENU_GREEN,
+                WHITE,
+                SKY_BLUE
+            )
+
+            buttons.append([to_button,'to_button'])
+
+            # search
+            search_button = Button(
+                2.2 * self.triangle_size,
+                self.margin + 4.3* self.triangle_size,
+                2.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'type your place...',
+                MENU_GREEN,
+                WHITE,
+                SKY_BLUE
+            )
+
+            buttons.append([search_button,'search_button'])
        
         return buttons
 

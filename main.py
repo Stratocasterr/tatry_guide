@@ -32,6 +32,7 @@ class GameView():
             self.handle_events()
             self.sterowanie()
             self.points = add_point(self.map_x, self.map_y)
+            self.map_x, self.map_y = find_point("RYSY", self.points)[0], find_point("RYSY", self.points)[1] 
             self.generate_tools()
             
            
@@ -41,7 +42,7 @@ class GameView():
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
-
+        print(self.map_x, self.map_y)
         for point in self.points:
             point.draw_me()
 
@@ -50,20 +51,20 @@ class GameView():
         Window(self.actual_window).draw_me()
 
         
-        print(self.buttons)
+        
         for button in self.buttons:
             
             if button[0].active_button:
                 
                 
                 if button[2] == 'show_side_menu_button':
-                    print("ss")
+            
                     self.actual_window = 'side menu'
                     self.append_tools = True
                 elif button[2] == 'hide_side_menu_button':
                     self.actual_window = 'sidebar'
                     self.append_tools = True
-                    print("bb")
+                   
                 
             if len(button) == 2: button[0].draw_the_button()
             else:  
@@ -82,7 +83,7 @@ class GameView():
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
-                #print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             ''' 
             if event.type==pygame.KEYDOWN:

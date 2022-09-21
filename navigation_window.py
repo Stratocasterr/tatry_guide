@@ -105,3 +105,7 @@ class Window:
             buttons.append([hide_side_menu_button, hide_side_menu_button_arrow_icon, 'hide_side_menu_button'])
        
         return buttons
+
+
+
+

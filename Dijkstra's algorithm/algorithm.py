@@ -39,23 +39,22 @@ def the_shortest_path(A,B,graph):
         Q.remove(graph[2][vertex])
 
         neighbours=basic_functions.find_neighbours(S[-1],graph)
-        print(S[-1])
+        
         for nei in neighbours:
             weight=basic_functions.find_weight_btwn_neighbours(S[-1],nei,graph)
-            #print(weight,nei)
-
+            
             if d[graph[2].index(nei)]>int(d[graph[2].index(S[-1])])+int(weight):
                 d[graph[2].index(nei)]=int(d[graph[2].index(S[-1])])+int(weight) 
                 p[graph[2].index(nei)]=S[-1]
 
-    
+    ''' 
     print("S ",S)
     print("Q: ",Q)
     print("D: ",d)
     print("P: ",p)
     print("####################################")
-    
-    
+    '''
+
     # building answer  [path (list of vertices), total weight of path]
     answer=[B]
     # building path

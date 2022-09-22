@@ -1,3 +1,4 @@
+from operator import concat
 from button import *
 import pygame
 from config import *
@@ -34,16 +35,24 @@ class GameView():
         self.points_names = []
         self.points_namesPL = []
         self.suggesting = False
+
+        # path
+        self.create_path = False
+        self.path = []
+
+        self.start = 'ŚWINICA'
+        self.destination = 'ZADNI GRANAT'
        
     def generate_tools(self):
         if self.append_tools:
             self.buttons = Window(self.actual_window).add_buttons()
             self.points_names = get_points_names(self.points)
-            
-            print(algorithm.the_shortest_path('GORYCZKOWA CZUBA','GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY',mp_graph))
-
+ 
         self.append_tools = False
 
+    def create_path_for_me(self):
+        if self.create_path: self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
+        else : self.path = []
 
     def game_loop(self):
 
@@ -53,6 +62,8 @@ class GameView():
             self.sterowanie()
             self.points = add_point(self.map_x, self.map_y)
             self.generate_tools()
+            self.create_path_for_me()
+            print(self.create_path)
 
             # print(find_name(self.points_names, self.keyboard_input))
            
@@ -64,7 +75,8 @@ class GameView():
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
-       
+
+        if self.path : draw_the_line(self.path, self.points)
         
 
         # draw points
@@ -179,6 +191,8 @@ class GameView():
                     self.keyboard_input += "u"
                 elif event.key == pygame.K_p:
                     self.keyboard_input += "p"
+                    if not self.create_path:  self.create_path= True
+                    else : self.create_path = False
                 elif event.key == pygame.K_r:
                     self.keyboard_input += "r"
                 elif event.key == pygame.K_s:

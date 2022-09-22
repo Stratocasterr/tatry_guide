@@ -5,7 +5,9 @@ from os import remove
 from textwrap import indent
 from tracemalloc import start
 import numpy as np 
-
+import pygame
+from config import *
+from colors import *
 
 
 def graph_check(graph):
@@ -127,23 +129,23 @@ def get_points_names(points):
     
     name = ''
     for point in points:
-        if not (any(char.isdigit() for char in point.name)):
+        #if not (any(char.isdigit() for char in point.name)):
            
-            for letter in point.name:
-                if letter == "Ż": name += 'z'
-                elif letter == "Ń": name += 'n'
-                elif letter == "Ó": name += 'o'
-                elif letter == "Ś": name += 's'
-                elif letter == "Ć": name += 'c'
-                elif letter == "Ą": name += 'a'
-                elif letter == "Ę": name += 'e'
-                elif letter == "Ł": name += 'l'
-                elif letter == "Ź": name += 'z'
-                else : name += letter
-            name = name.lower()
-            
-            answer.append(name)
-            name = ''
+        for letter in point.name:
+            if letter == "Ż": name += 'z'
+            elif letter == "Ń": name += 'n'
+            elif letter == "Ó": name += 'o'
+            elif letter == "Ś": name += 's'
+            elif letter == "Ć": name += 'c'
+            elif letter == "Ą": name += 'a'
+            elif letter == "Ę": name += 'e'
+            elif letter == "Ł": name += 'l'
+            elif letter == "Ź": name += 'z'
+            else : name += letter
+        name = name.lower()
+        
+        answer.append(name)
+        name = ''
     return answer
 
 def find_point(point_name, points):
@@ -151,12 +153,9 @@ def find_point(point_name, points):
         if point.name == point_name:
             return [point.x, point.y]
 
-# input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
-def draw_the_line(points):
-    for i in range(len(points)):
-        if i < len(points) - 2:
-            pygame.draw.line(WIN, RED, points[i], points[i+1], 8)
 
+
+    
 
 def find_name(points_names, input_name):
     suggestions = []
@@ -165,4 +164,18 @@ def find_name(points_names, input_name):
             if point[:len(input_name)] == input_name: suggestions.append(point)
     return suggestions
 
+def draw_the_line(path, points):
+    cords = []
+    for step in path[0]:
+        for point in points:
+            if point.name == step:
+                cords.append([point.x, point.y])
 
+    # input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
+
+    for i in range(len(cords)):
+        if i < len(cords) - 2:
+            pygame.draw.line(WIN, RED, cords[i], cords[i+1], 8)
+
+                
+   

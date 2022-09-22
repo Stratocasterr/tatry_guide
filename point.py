@@ -10,16 +10,16 @@ class Point:
         self.radius=radius
         self.color=color
         self.name=name
-        
+        self.rect = pygame.Rect(self.x, self.y, 3 * self.radius, 3 *  self.radius)
+        self.checked = False
     
-    
-    def draw_me(self):
-        pygame.draw.circle(WIN,self.color,(self.x,self.y),self.radius)
+    def draw_me(self, offset_x, offset_y):
+        pygame.draw.circle(WIN,self.color,(self.x + offset_x, self.y + offset_y), self.radius)
 
 
 
 
-def add_point(offset_x, offset_y):
+def add_point(offset_x = 0, offset_y = 0):
     points=[
         Point(133+offset_x,18+offset_y,5,RED,'GORYCZKOWA CZUBA'),                                 # GORYCZKOWA CZUBA
         Point(215+offset_x,44+offset_y,5,RED,'GORYCZKOWA PRZEŁĘCZ ŚWIŃSKA'),                      # GORYCZKOWA PRZEŁĘCZ ŚWIŃSKA

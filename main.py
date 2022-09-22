@@ -40,12 +40,15 @@ class GameView():
         self.create_path = False
         self.path = []
 
-        self.start = 'ŚWINICA'
-        self.destination = 'ZADNI GRANAT'
+        # self.start = 'ŚWINICA'
+        # self.destination = 'ZADNI GRANAT'
+        
+        self.chosen_points = []
        
     def generate_tools(self):
         if self.append_tools:
             self.buttons = Window(self.actual_window).add_buttons()
+            self.points = add_point()
             self.points_names = get_points_names(self.points)
  
         self.append_tools = False
@@ -60,13 +63,8 @@ class GameView():
             self.game_draw()
             self.handle_events()
             self.sterowanie()
-            self.points = add_point(self.map_x, self.map_y)
             self.generate_tools()
             self.create_path_for_me()
-            print(self.create_path)
-
-            # print(find_name(self.points_names, self.keyboard_input))
-           
 
     def game_draw(self):
         # draw map
@@ -75,7 +73,7 @@ class GameView():
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
-
+        
         if self.path : draw_the_line(self.path, self.points)
         
 
@@ -83,8 +81,18 @@ class GameView():
 
         for point in self.points:
             
-            point.draw_me()
-
+            if check_point_collision(point, self.map_x, self.map_y):
+                draw_info(point, self.map_x, self.map_y)
+                pygame.draw.circle(WIN, point.color, (point.x + self.map_x, point.y + self.map_y), 10)
+                if len(self.chosen_points) < 2:
+                    if pygame.mouse.get_pressed()[0]:
+                        point.checked = True
+                        self.chosen_points.append(point)
+            if point.checked: 
+                point.radius = 10
+                point.color = PURPLE       
+                    
+            point.draw_me(self.map_x, self.map_y)
         # draw actual window
         
         Window(self.actual_window).draw_me()
@@ -130,7 +138,7 @@ class GameView():
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
-                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                # print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             if event.type == pygame.KEYDOWN:
 

@@ -148,6 +148,20 @@ class Window:
 
             buttons.append([clear_from_button,'clear_from_button'])
 
+            help_from_button = Button(
+                5.4 * self.triangle_size,
+                self.margin + 2.3* self.triangle_size,
+                0.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                '?',
+                WHITE,
+                SKY_BLUE,
+                SKY_BLUE
+                
+            )
+
+            buttons.append([help_from_button,'help_from_button'])
+
             # to
             to_button = Button(
                 2.2 * self.triangle_size,
@@ -179,6 +193,20 @@ class Window:
 
             buttons.append([clear_to_button,'clear_to_button'])
 
+            help_to_button = Button(
+                5.4 * self.triangle_size,
+                self.margin + 3.3* self.triangle_size,
+                0.5 * self.triangle_size,
+                0.5 * self.triangle_size,
+                '?',
+                WHITE,
+                SKY_BLUE,
+                SKY_BLUE
+                
+            )
+
+            buttons.append([help_to_button,'help_to_button'])
+
             # search
             search_button = Button(
                 2.2 * self.triangle_size,
@@ -193,6 +221,21 @@ class Window:
             )
 
             buttons.append([search_button,'search_button'])
+
+
+            draw_path_button = Button(
+                4.8 * self.triangle_size,
+                self.margin + 4.3* self.triangle_size,
+                1.1 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'Draw path',
+                WHITE,
+                SKY_BLUE,
+                SKY_BLUE
+            
+            )
+
+            buttons.append([draw_path_button,'draw_path_button'])
        
         return buttons
 

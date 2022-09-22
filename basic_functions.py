@@ -1,3 +1,4 @@
+from tkinter import W
 import numpy as np
 from hmac import new
 from operator import ne
@@ -7,6 +8,7 @@ from tracemalloc import start
 import numpy as np 
 import pygame
 from config import *
+from text import *
 from colors import *
 
 
@@ -123,7 +125,6 @@ def upstdn_array(array):
     return [array[len(array)-x-1] for x in range(len(array))]
 
 
-
 def get_points_names(points):
     answer = []
     
@@ -153,10 +154,6 @@ def find_point(point_name, points):
         if point.name == point_name:
             return [point.x, point.y]
 
-
-
-    
-
 def find_name(points_names, input_name):
     suggestions = []
     if len(input_name) > 0:
@@ -175,7 +172,21 @@ def draw_the_line(path, points):
 
     for i in range(len(cords)):
         if i < len(cords) - 2:
-            pygame.draw.line(WIN, RED, cords[i], cords[i+1], 8)
+            pygame.draw.line(WIN, PURPLE, cords[i], cords[i+1], 8)
 
                 
-   
+
+def draw_info(point, offset_x, offset_y):
+    pygame.draw.rect(WIN, OFF_WHITE, pygame.Rect(
+        point.x - 2 * point.radius + offset_x,
+        point.y + 5 * point.radius + offset_y,
+        8 * len(point.name), 5 * point.radius))
+
+    text_rendering(point.name, MENU_GREEN, OFF_WHITE, (point.x + offset_x - 2 * point.radius + (8 * len(point.name)) / 2, point.y + offset_y + 5 * point.radius + (5 * point.radius) / 2), BASIC_FONT)
+
+
+def check_point_collision(point, offset_x, offset_y):
+    rect = pygame.Rect(point.x + offset_x, point.y + offset_y, 3 * point.radius, 3 *  point.radius)
+    if rect.collidepoint(pygame.mouse.get_pos()):
+        return True
+    else : return False

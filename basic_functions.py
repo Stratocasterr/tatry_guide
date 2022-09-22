@@ -190,3 +190,13 @@ def check_point_collision(point, offset_x, offset_y):
     if rect.collidepoint(pygame.mouse.get_pos()):
         return True
     else : return False
+
+def draw_help_info(button, x, y):
+    info = ''
+    if button == "from":
+        info = 'wfnojwrfjowrnfjwr fwrnojfnwrfjwr fwrnofwrnjfwrfnp'
+    elif button == "to":
+        info = 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzz'
+
+    pygame.draw.rect(WIN, OFF_WHITE,
+                    pygame.Rect(x + 600, y, 100,100))

@@ -1,3 +1,4 @@
+from fileinput import close
 from re import S, search
 import pygame
 from colors import *
@@ -18,8 +19,12 @@ class Window:
         # graphics staff
         self.triangle_size = 50
         
-    
+        # buttons
+        self.from_help_window = False
+        self.to_help_window = False
+
     def draw_me(self):
+        
         if self.actual_window == 'sidebar':
 
             pygame.draw.polygon(WIN, MENU_GREEN, [
@@ -75,6 +80,9 @@ class Window:
             WIN.blit(FROM,(0.2 * self.triangle_size, 4 * self.triangle_size))
             WIN.blit(TO,(0.45 * self.triangle_size, 5.2 * self.triangle_size))
             WIN.blit(SEARCH,(0.45 * self.triangle_size, 6.2 * self.triangle_size))
+
+            if self.from_help_window: draw_help_info("from", 6 * self.triangle_size, self.margin + 2.3* self.triangle_size)
+            if self.to_help_window: draw_help_info("to", 6 * self.triangle_size, self.margin + 3.3* self.triangle_size)
 
 
     def add_buttons(self):
@@ -236,6 +244,34 @@ class Window:
             )
 
             buttons.append([draw_path_button,'draw_path_button'])
+
+
+            if self.from_help_window:
+                close_help_from_button = Button(
+                6 * self.triangle_size,
+                self.margin + 2.3* self.triangle_size,
+                0.2 * self.triangle_size,
+                0.2 * self.triangle_size,
+                '?',
+                WHITE,
+                SKY_BLUE,
+                SKY_BLUE
+                
+            )
+            if self.to_help_window:
+                close_help_to_button = Button(
+                6 * self.triangle_size,
+                self.margin + 3.3* self.triangle_size,
+                0.2 * self.triangle_size,
+                0.2 * self.triangle_size,
+                'X',
+                WHITE,
+                SKY_BLUE,
+                SKY_BLUE
+                
+            )
+                
+            
        
         return buttons
 

@@ -1,3 +1,4 @@
+from start_menu import *
 from operator import concat
 from button import *
 import pygame
@@ -73,7 +74,7 @@ class GameView():
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
-        
+       
         if self.path : draw_the_line(self.path, self.points)
         
 
@@ -87,38 +88,47 @@ class GameView():
                 if len(self.chosen_points) < 2:
                     if pygame.mouse.get_pressed()[0]:
                         point.checked = True
-                        self.chosen_points.append(point)
+                        if point not in self.chosen_points: self.chosen_points.append(point)
             if point.checked: 
                 point.radius = 10
                 point.color = PURPLE       
                     
             point.draw_me(self.map_x, self.map_y)
         # draw actual window
+        window =  Window(self.actual_window)
+        window.draw_me()
         
-        Window(self.actual_window).draw_me()
-
         # draw actual window's buttons
         
         for button in self.buttons:
-           
+            
             if button[0].active_button:
                 
                 if button[1] == 'show_side_menu_button':
                     self.actual_window = 'side menu'
                     self.append_tools = True
+                    
 
                 elif button[1] == 'hide_side_menu_button':
                     self.actual_window = 'sidebar'
                     self.append_tools = True
+                    
 
                 elif button[1] == 'search_button':
                     button[0].allow = True
-                    
+
+                elif button[1] == 'help_from_button':
+                    window.from_help_window = True
+                    print("d")
+                
+                elif button[1] == 'help_to_button':
+                    print("x")
+                    window.to_help_window = True
             
             if button[0].allow:
                 button[0].text = self.keyboard_input
             
-
+            
                    
                 
             if len(button) == 2: button[0].draw_the_button()
@@ -241,7 +251,14 @@ class GameView():
             if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=1
 
 def main():
-    GameView().game_loop()
+    answer = []
+    start_menu = True
+    while start_menu:
+        answer = starting_menu()
+        start_menu = answer[0]
+    
+    if answer[1]: GameView().game_loop()
+    
     
 
 if __name__ == "__main__":

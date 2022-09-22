@@ -16,9 +16,9 @@ class Button:
         self.activate_color = activate_color
         self.active_button = False
         self.rect = pygame.Rect(self.x, self.y, self.length, self.height)
-
-        self.allow = False
         
+        self.allow = False
+        self.display_help = False
 
     def draw_the_button(self):
         self.active_button = False

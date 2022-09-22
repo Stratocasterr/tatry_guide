@@ -8,6 +8,10 @@ BASIC_FONT = pygame.font.Font('fonts/freesansbold.ttf', 10)
 
 WIN = pygame.display.set_mode((SCREEN_LENGTH, SCREEN_HEIGHT))
 
+
+# images 
+
+# map images
 LT_MAP=pygame.image.load('images/mapLT.jpg')
 LT_MAP_SIZE=[LT_MAP.get_width(),LT_MAP.get_height()]
 
@@ -20,6 +24,7 @@ RT_MAP_SIZE=[RT_MAP.get_width(),RT_MAP.get_height()]
 RB_MAP=pygame.image.load('images/mapRB.jpg')
 RB_MAP_SIZE=[RB_MAP.get_width(),RB_MAP.get_height()]
 
+# side menu images
 TATRY_GUIDE_LOGO = pygame.image.load('images/tatryguide_logo.jpg')
 TATRY_GUIDE_LOGO = pygame.transform.scale(TATRY_GUIDE_LOGO, (257, 177))
 
@@ -32,3 +37,10 @@ TO = pygame.image.load('images/to.png')
 
 SEARCH = pygame.image.load('images/search.png')
 SEARCH = pygame.transform.scale(SEARCH, (70, 30))
+
+
+# start menu images
+START_MENU = pygame.image.load('images/start_menu.png')
+START_MENU_START = pygame.image.load('images/start_menu_start.png')
+START_MENU_QUIT = pygame.image.load('images/start_menu_quit.png')
+START_MENU_ABOUT = pygame.image.load('images/start_menu_about.png')

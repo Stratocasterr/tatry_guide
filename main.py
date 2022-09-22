@@ -1,10 +1,18 @@
 from button import *
-import imp
-import colors
 import pygame
 from config import *
 from point import *
 from navigation_window import *
+from basic_functions import *
+
+from turtle import window_height
+import numpy as np
+import sys
+
+sys.path.append("C:/Users/kacpe/Visual Studio Projects/tatry_guide/Dijkstra's algorithm")
+import algorithm
+
+from graph_map import map_graph as mp_graph
 
 CLOCK = pygame.time.Clock()
 
@@ -31,6 +39,9 @@ class GameView():
         if self.append_tools:
             self.buttons = Window(self.actual_window).add_buttons()
             self.points_names = get_points_names(self.points)
+            
+            print(algorithm.the_shortest_path('GORYCZKOWA CZUBA','GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY',mp_graph))
+
         self.append_tools = False
 
 

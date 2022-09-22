@@ -33,11 +33,6 @@ def add_point(offset_x, offset_y):
 
 
         
-        Point(728+offset_x,66+offset_y,5,GREEN,'SZ1a'),
-        Point(723+offset_x,102+offset_y,5,GREEN,'SZ1b'),
-        Point(718+offset_x,126+offset_y,5,GREEN,'SZ1c'),
-        Point(730+offset_x,154+offset_y,5,GREEN,'SZ1d'),
-        Point(731+offset_x,200+offset_y,5,GREEN,'SZ1e'),
 
 
         Point(1104+offset_x,354+offset_y,5,RED,'NIEBIESKA PRZEŁĘCZ'),                             # NIEBIESKA PRZEŁĘCZ
@@ -201,6 +196,11 @@ def add_point(offset_x, offset_y):
         Point(1405+1000+offset_x,799+700+offset_y,5,RED,'WAGA'),                                  # WAGA
 
         #SZLAK ZIELONY NA WSCHOD OD KASPROWEGO
+        Point(728+offset_x,66+offset_y,5,GREEN,'SZ1a'),
+        Point(723+offset_x,102+offset_y,5,GREEN,'SZ1b'),
+        Point(718+offset_x,126+offset_y,5,GREEN,'SZ1c'),
+        Point(730+offset_x,154+offset_y,5,GREEN,'SZ1d'),
+        Point(731+offset_x,200+offset_y,5,GREEN,'SZ1e'),
         
 
         #SZLAK CZARNY NA WSCHOD OD KASPROWEGO
@@ -229,14 +229,14 @@ def add_point(offset_x, offset_y):
         Point(1107+offset_x,9+offset_y,5,BLACK,'SCZ2e'),
         
         #SZLAK NIEBIESKI PRZY CZARNYM STAWIE GĄSIENNICOWYM
-        Point(1155+offset_x,5+offset_y,5,BLUE,'SNB1a'),
-        Point(1192+offset_x,3+offset_y,5,BLUE,'SNB1b'),
-        Point(1214+offset_x,65+offset_y,5,BLUE,'SNB1c'),
-        Point(1257+offset_x,129+offset_y,5,BLUE,'SNB1d'),
-        Point(1248+offset_x,195+offset_y,5,BLUE,'SNB1e'),
-        Point(1220+offset_x,236+offset_y,5,BLUE,'SNB1f'),
-        Point(1196+offset_x,273+offset_y,5,BLUE,'SNB1g'),
-        Point(1164+offset_x,333+offset_y,5,BLUE,'SNB1h'),
+        Point(1155+offset_x,5+offset_y,5,BLUE,'SNB2a'),
+        Point(1192+offset_x,3+offset_y,5,BLUE,'SNB2b'),
+        Point(1214+offset_x,65+offset_y,5,BLUE,'SNB2c'),
+        Point(1257+offset_x,129+offset_y,5,BLUE,'SNB2d'),
+        Point(1248+offset_x,195+offset_y,5,BLUE,'SNB2e'),
+        Point(1220+offset_x,236+offset_y,5,BLUE,'SNB2f'),
+        Point(1196+offset_x,273+offset_y,5,BLUE,'SNB2g'),
+        Point(1164+offset_x,333+offset_y,5,BLUE,'SNB2h'),
 
         #SZLAK ZIELONY NA PÓŁNOC OD KOZIEGO WIERCHU
 
@@ -267,50 +267,5 @@ def add_point(offset_x, offset_y):
     ]
     return points
 
-
-
-
-def get_points_names(points):
-    answer = []
-    
-    name = ''
-    for point in points:
-        if not (any(char.isdigit() for char in point.name)):
-           
-            for letter in point.name:
-                if letter == "Ż": name += 'z'
-                elif letter == "Ń": name += 'n'
-                elif letter == "Ó": name += 'o'
-                elif letter == "Ś": name += 's'
-                elif letter == "Ć": name += 'c'
-                elif letter == "Ą": name += 'a'
-                elif letter == "Ę": name += 'e'
-                elif letter == "Ł": name += 'l'
-                elif letter == "Ź": name += 'z'
-                else : name += letter
-            name = name.lower()
-            
-            answer.append(name)
-            name = ''
-    return answer
-
-def find_point(point_name, points):
-    for point in points:
-        if point.name == point_name:
-            return [point.x, point.y]
-
-# input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
-def draw_the_line(points):
-    for i in range(len(points)):
-        if i < len(points) - 2:
-            pygame.draw.line(WIN, RED, points[i], points[i+1], 8)
-
-
-def find_name(points_names, input_name):
-    suggestions = []
-    if len(input_name) > 0:
-        for point in points_names:
-            if point[:len(input_name)] == input_name: suggestions.append(point)
-    return suggestions
 
 

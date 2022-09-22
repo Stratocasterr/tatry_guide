@@ -24,22 +24,13 @@ def add_point(offset_x, offset_y):
         Point(133+offset_x,18+offset_y,5,RED,'GORYCZKOWA CZUBA'),                                 # GORYCZKOWA CZUBA
         Point(215+offset_x,44+offset_y,5,RED,'GORYCZKOWA PRZEŁĘCZ ŚWIŃSKA'),                      # GORYCZKOWA PRZEŁĘCZ ŚWIŃSKA
         Point(280+offset_x,47+offset_y,5,RED,'POŚREDNI WIERCH GORYCZKOWY'),                       # POŚREDNI WIERCH GORYCZKOWY
-        Point(341+offset_x,69+offset_y,5,RED,'GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY'),                              # GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY
+        Point(341+offset_x,69+offset_y,5,RED,'GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY'),                   # GORYCZKOWA PRZEŁĘCZ NAD ZAKOSY
         Point(548+offset_x,33+offset_y,5,RED,'KASPROWY WIERCH'),                                  # KASPROWY WIERCH 
-        
         Point(570+offset_x,60+offset_y,5,RED,'SUCHA PRZEŁĘCZ'),                                   # SUCHA PRZEŁĘCZ 
         Point(647+offset_x,115+offset_y,5,RED,'BESKID'),                                          # BESKID
         Point(715+offset_x,200+offset_y,5,RED,'LILIOWE'),                                         # LILIOWE
-
-
-        
-
-
         Point(1104+offset_x,354+offset_y,5,RED,'NIEBIESKA PRZEŁĘCZ'),                             # NIEBIESKA PRZEŁĘCZ
         Point(801+offset_x,89+offset_y,5,RED,'KOTLINOWY STAWEK'),                                 # KOTLINOWY STAWEK
-        
-       
-        
         Point(932+offset_x,94+offset_y,5,RED,'KURTKOWIEC'),                                       # KURTKOWIEC
         Point(939+offset_x,146+offset_y,5,RED,'CZERWONE STAWKI'),                                 # CZERWONE STAWKI
         Point(982+offset_x,756+offset_y,5,RED,'ZAWORY'),                                          # ZAWORY
@@ -51,15 +42,11 @@ def add_point(offset_x, offset_y):
         Point(1359+offset_x,719+500+offset_y,5,RED,'NIŻNA PRZYBYLIŃSKA PRZEŁĘCZ'),                # NIŻNA PRZYBYLIŃSKA PRZEŁĘCZ
         Point(1494+offset_x,782+500+offset_y,5,RED,'NIŻNI'),                                      # NIŻNI
         Point(1546+offset_x,792+500+offset_y,5,RED,'WYŻNI'),                                      # WYŻNI
-
         Point(1685+offset_x,830+500+offset_y,5,RED,'KOPROWY WIERCH'),                             # KOPROWY WIERCH    
         Point(1672+offset_x,618+500+offset_y,5,RED,'CIEMNOSMRECZYŃSKA TURNIA'),                   # CIEMNOSMRECZYŃSKA TURNIA
         Point(1591+offset_x,540+500+offset_y,5,RED,'GŁAŹNE WROTKA'),                              # GŁAŹNE WROTKA
         Point(1549+offset_x,475+500+offset_y,5,RED,'WYŻNIE SZPIGLASOWE WROTKA'),                  # WYŻNIE SZPIGLASOWE WROTKA
         Point(1528+offset_x,250+500+offset_y,5,RED,'SZPIGLASOWE STAWKI'),                         # SZPIGLASOWE STAWKI
-        
-        
-        
         Point(847+offset_x,282+offset_y,5,RED,'SKRAJNA PRZEŁĘCZ'),                                # SKRAJNA PRZEŁĘCZ
         Point(882+offset_x,283+offset_y,5,RED,'POŚREDNIA TURNIA'),                                # POŚREDNIA TURNIA
         Point(790+offset_x,245+offset_y,5,RED,'SKRAJNA TURNIA'),                                  # SKRAJNA TURNIA
@@ -89,9 +76,6 @@ def add_point(offset_x, offset_y):
         Point(1434+offset_x,156+offset_y,5,RED,'SKRAJNY GRANAT'),                                 # SKRAJNY GRANAT
         Point(1238+offset_x,244+offset_y,5,RED,'ZMARZŁY STAW'),                                   # ZMARZŁY STAW
         Point(1163+offset_x,108+offset_y,5,RED,'CZARNY STAW GĄSIENNICOWY'),                       # CZARNY STAW GĄSIENNICOWY
-        
-        
-        
         Point(1209+offset_x,472+offset_y,5,RED,'KOŁOWA CZUBA'),                                   # KOŁOWA CZUBA
         Point(1084+offset_x,568+offset_y,5,RED,'ZADNI STAW POLSKI'),                              # ZADNI STAW POLSKI
         Point(1117+offset_x,607+offset_y,5,RED,'WOLE OKO'),                                       # WOLE OKO
@@ -156,9 +140,7 @@ def add_point(offset_x, offset_y):
         Point(883+500+offset_x,66+offset_y,5,RED,'ŻÓŁTA PRZEŁĘCZ'),                               # ŻÓŁTA PRZEŁĘCZ
         Point(911+500+offset_x,105+offset_y,5,RED,'WIERCH POD FAJKI'),                            # WIERCH POD FAJKI
         Point(918+500+offset_x,111+offset_y,5,RED,'PAŃSZCZYŃSKA PRZEŁĘCZ'),                       # PAŃSZCZYŃSKA PRZEŁĘCZ
-        
-        
-        Point(958+500+offset_x,155+offset_y,5,RED,'GRANACKA PRZEŁĘCZ'),                              # SKRAJNY GRANAT
+        Point(958+500+offset_x,155+offset_y,5,RED,'GRANACKA PRZEŁĘCZ'),                           # SKRAJNY GRANAT
         Point(1022+500+offset_x,152+offset_y,5,RED,'KOŁOWA CZUBA'),                               # KOŁOWA CZUBA
         Point(1054+500+offset_x,149+offset_y,5,RED,'WIELKA BUCZYNOWA TURNIA'),                    # WIELKA BUCZYNOWA TURNIA
         Point(1100+500+offset_x,146+offset_y,5,RED,'MAŁA BUCZYNOWA'),                             # MAŁA BUCZYNOWA

@@ -59,7 +59,7 @@ class GameView():
         if self.append_tools:
             self.buttons = Window(self.actual_window).add_buttons()
             self.points = add_point()
-            self.points_names = get_points_names(mp_graph[2])
+            self.points_names = get_points_names(self.points)
             print(self.points_names)
         self.append_tools = False
 
@@ -77,9 +77,11 @@ class GameView():
                             pygame.Rect(300, 315, 35, 25))
                 if self.counter == 200: self.counter = 0
 
-            if self.path : draw_the_line(self.path, self.points)
+            if self.path : 
+                print(self.path)
+                print(self.points)
+                draw_the_line(self.path, self.points, self.points_names)
 
-        
         
     def game_loop(self):
 

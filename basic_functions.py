@@ -129,10 +129,14 @@ def get_points_names(points):
     answer = []
     
     name = ''
+    pname = ''
+
     for point in points:
+        
         #if not (any(char.isdigit() for char in point.name)):
-           
-        for letter in point.name:
+        if type(point) == str: pname = point
+        else: pname = point.name  
+        for letter in pname:
             if letter == "Ż": name += 'z'
             elif letter == "Ń": name += 'n'
             elif letter == "Ó": name += 'o'
@@ -151,7 +155,7 @@ def get_points_names(points):
 
 def find_point(point_name, points):
     for point in points:
-        if point.name == point_name:
+        if pname == point_name:
             return [point.x, point.y]
 
 def find_name(points_names, input_name):
@@ -161,17 +165,17 @@ def find_name(points_names, input_name):
             if point[:len(input_name)] == input_name: suggestions.append(point)
     return suggestions
 
-def draw_the_line(path, points):
+def draw_the_line(path, points, points_names):
     cords = []
     for step in path[0]:
-        for point in points:
-            if point.name == step:
-                cords.append([point.x, point.y])
+        for point_name in points_names:
+            if point_name == step:
+                cords.append([points[points_names.index(point_name)].x, points[points_names.index(point_name)].y])
 
     # input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
 
     for i in range(len(cords)):
-        if i < len(cords) - 2:
+        if i < len(cords) - 1:
             pygame.draw.line(WIN, PURPLE, cords[i], cords[i+1], 8)
 
                 

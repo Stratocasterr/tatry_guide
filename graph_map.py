@@ -1,5 +1,5 @@
 import numpy as np
-
+from basic_functions import *
 
 
 adjacency_matrix=np.array([
@@ -373,7 +373,7 @@ weights_matrix = np.array(
 
 vertices_list=['1','2','3','4','5']
 ''' 
-
+vertices_list = get_points_names(vertices_list)
 
 map_graph=[
     adjacency_matrix,

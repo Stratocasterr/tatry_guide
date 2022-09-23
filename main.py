@@ -251,8 +251,8 @@ class GameView():
             if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=1
 
 def main():
-    answer = []
-    start_menu = True
+    answer = [True, True]
+    start_menu = False
     while start_menu:
         answer = starting_menu()
         start_menu = answer[0]

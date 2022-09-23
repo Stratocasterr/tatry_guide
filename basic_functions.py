@@ -155,27 +155,23 @@ def get_points_names(points):
 
 def find_point(point_name, points):
     for point in points:
-        if pname == point_name:
+        if point.name == point_name:
             return [point.x, point.y]
 
-def find_name(points_names, input_name):
-    suggestions = []
-    if len(input_name) > 0:
-        for point in points_names:
-            if point[:len(input_name)] == input_name: suggestions.append(point)
-    return suggestions
 
-def draw_the_line(path, points, points_names):
+
+def draw_the_line(path, points, points_names, offset_x, offset_y):
     cords = []
     for step in path[0]:
         for point_name in points_names:
             if point_name == step:
-                cords.append([points[points_names.index(point_name)].x, points[points_names.index(point_name)].y])
+                cords.append([points[points_names.index(point_name)].x + offset_x, points[points_names.index(point_name)].y + offset_y])
 
     # input for line to draw points = [(x1, y1), (x2, y2), ..., (xn, yn)]
 
     for i in range(len(cords)):
         if i < len(cords) - 1:
+           
             pygame.draw.line(WIN, PURPLE, cords[i], cords[i+1], 8)
 
                 
@@ -204,3 +200,37 @@ def draw_help_info(button, x, y):
 
     pygame.draw.rect(WIN, OFF_WHITE,
                     pygame.Rect(x + 600, y, 100,100))
+
+
+def animate_arrow(counter):
+# animate arrow
+    pygame.draw.polygon(WIN, LIGHT_GREEN, [(300, 327), (315, 339), (315, 315)])
+    pygame.draw.rect(WIN,LIGHT_GREEN,
+                    pygame.Rect(315, 321, 20, 12))
+
+    counter+=1
+    if counter > 150:
+        pygame.draw.rect(WIN,MENU_GREEN,
+                    pygame.Rect(300, 315, 35, 25))
+        if counter == 200: counter = 0
+    return counter
+
+
+def find_name(points_names, input_name):
+    suggestions = []
+    if len(input_name) > 0:
+        for point in points_names:
+            if point[:len(input_name)] == input_name: suggestions.append(point)
+    return suggestions
+
+
+def draw_suggestions(suggestions):
+    print(suggestions)
+    pygame.draw.rect(WIN, OFF_WHITE,
+                    pygame.Rect(400,100,100,400))
+
+    offset_y = 0
+    for sug in suggestions:
+        offset_y += 15
+        
+        text_rendering(sug, MENU_GREEN, OFF_WHITE, (400, 100+ offset_y,), BASIC_FONT)

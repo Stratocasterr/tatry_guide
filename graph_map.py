@@ -313,7 +313,7 @@ vertices_list=[
     'SKRAJNY GRANAT',
     'GRANACKA PRZEŁĘCZ',
 
-    'KOŁOWA CZUBA',
+    'PRZEŁĘCZ NOWICKIEGO',
     'SZO1e',
     'PAŃSZCZYŃSKA PRZEŁĘCZ',
     'WIERCH POD FAJKI',

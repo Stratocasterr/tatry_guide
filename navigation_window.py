@@ -140,21 +140,7 @@ class Window:
 
             buttons.append([from_button,'from_button'])
 
-            # clear from
-
-            clear_from_button = Button(
-                4.8 * self.triangle_size,
-                self.margin + 2.3* self.triangle_size,
-                0.5 * self.triangle_size,
-                0.5 * self.triangle_size,
-                'X',
-                WHITE,
-                RED,
-                SKY_BLUE
-                
-            )
-
-            buttons.append([clear_from_button,'clear_from_button'])
+            
 
             help_from_button = Button(
                 5.4 * self.triangle_size,
@@ -185,21 +171,7 @@ class Window:
 
             buttons.append([to_button,'to_button'])
 
-            # clear to
-
-            clear_to_button = Button(
-                4.8 * self.triangle_size,
-                self.margin + 3.3* self.triangle_size,
-                0.5 * self.triangle_size,
-                0.5 * self.triangle_size,
-                'X',
-                WHITE,
-                RED,
-                SKY_BLUE
-                
-            )
-
-            buttons.append([clear_to_button,'clear_to_button'])
+            
 
             help_to_button = Button(
                 5.4 * self.triangle_size,

@@ -37,7 +37,7 @@ class GameView():
         self.points = []
         self.points_names = []
         self.points_namesPL = []
-        self.suggesting = False
+        
         self.chosen_points = []
 
         # path
@@ -60,27 +60,15 @@ class GameView():
             self.buttons = Window(self.actual_window).add_buttons()
             self.points = add_point()
             self.points_names = get_points_names(self.points)
-            print(self.points_names)
+            #print(find_name(mp_graph[2], 'sk'))
+            
         self.append_tools = False
 
     def create_path_for_me(self):
-       if self.start and self.destination: 
-        
-            # animate arrow
-            pygame.draw.polygon(WIN, LIGHT_GREEN, [(300, 327), (315, 339), (315, 315)])
-            pygame.draw.rect(WIN,LIGHT_GREEN,
-                            pygame.Rect(315, 321, 20, 12))
-
-            self.counter+=1
-            if self.counter > 150:
-                pygame.draw.rect(WIN,MENU_GREEN,
-                            pygame.Rect(300, 315, 35, 25))
-                if self.counter == 200: self.counter = 0
-
-            if self.path : 
-                print(self.path)
-                print(self.points)
-                draw_the_line(self.path, self.points, self.points_names)
+ 
+            if self.path and self.start and self.destination: 
+                
+                draw_the_line(self.path, self.points, self.points_names, self.map_x, self.map_y)
 
         
     def game_loop(self):
@@ -107,10 +95,16 @@ class GameView():
 
         # draw and check points
         self.chosen_points = check_points(self.points, self.map_x, self.map_y, self.chosen_points)
-        
+
+        # draw path
+        self.create_path_for_me()
+
         # draw actual window
         window =  Window(self.actual_window)
         window.draw_me()
+
+        # animate arrow
+        if self.start and self.destination: self.counter = animate_arrow(self.counter)
         
         # draw actual window's buttons
         
@@ -129,48 +123,51 @@ class GameView():
 
 
 
-                elif button[1] == 'from_button': button[0].allow = True
+                elif button[1] == 'from_button': 
+                    button[0].allow = True
+                    self.start = ''
 
                 elif button[1] == 'help_from_button':
                     window.from_help_window = True
-                    print("d")
-
-                elif button[1] == 'clear_from_button':
-                    pass
-
+                    
 
                 
-
-               
-                elif button[1] == 'to_button': button[0].allow = True
+  
+                elif button[1] == 'to_button': 
+                    button[0].allow = True
+                    self.destination = ''
     
 
                 elif button[1] == 'help_to_button':
                     pass
 
-                elif button[1] == 'clear_to_button':
-                    pass
+ 
 
-
-
-
-                elif button[1] == 'search_button': button[0].allow = True 
+                # elif button[1] == 'search_button': button[0].allow = True 
                     
 
-                elif button[1] == 'draw_path_button':
-                    if self.start and self.destination: 
-                        self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
+                elif button[1] == 'draw_path_button':  button[0].allow = True 
+                    
             
 
 
 
 
             if button[0].allow:
+                # entering points
+
                 if button[1] == 'search_button' or button[1] == 'from_button' or button[1] == 'to_button':
+                    self.path = ''
                     button[0].text = self.keyboard_input
                     button[0].text_backing_color = SKY_BLUE
+
+                    
+                    if self.keyboard_input: 
+                        suggestions = find_name(mp_graph[2], self.keyboard_input)
+                        if suggestions: draw_suggestions(suggestions)
+
                     if self.enter:
-                        if self.keyboard_input in self.points_names : 
+                        if self.keyboard_input in mp_graph[2]: 
                             button[0].text_backing_color = LIGHT_GREEN
                             if button[1] == 'from_button' : self.start = self.keyboard_input
                             elif button[1] == 'to_button' : self.destination = self.keyboard_input
@@ -180,7 +177,11 @@ class GameView():
                         button[0].allow = False
                         self.enter = False
             
-            
+                elif button[1] == 'draw_path_button':
+                    button[0].allow = False
+                    
+                    if self.start and self.destination: 
+                        self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
                    
                 
             if len(button) == 2: button[0].draw_the_button()
@@ -188,7 +189,7 @@ class GameView():
                 button[0].draw_the_button()
                 button[2].draw_me()
 
-        self.create_path_for_me()
+        
         pygame.display.update()
 
 
@@ -200,7 +201,7 @@ class GameView():
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
-                # print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             if event.type == pygame.KEYDOWN:
 

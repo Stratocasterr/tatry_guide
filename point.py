@@ -142,7 +142,7 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(911+500+offset_x,105+offset_y,5,RED,'WIERCH POD FAJKI'),                            # WIERCH POD FAJKI
         Point(918+500+offset_x,111+offset_y,5,RED,'PAŃSZCZYŃSKA PRZEŁĘCZ'),                       # PAŃSZCZYŃSKA PRZEŁĘCZ
         Point(958+500+offset_x,155+offset_y,5,RED,'GRANACKA PRZEŁĘCZ'),                           # SKRAJNY GRANAT
-        Point(1022+500+offset_x,152+offset_y,5,RED,'KOŁOWA CZUBA'),                               # KOŁOWA CZUBA
+        Point(1022+500+offset_x,152+offset_y,5,RED,'PRZEŁĘCZ NOWICKIEGO'),                        # PRZEŁĘCZ NOWICKIEGO
         Point(1054+500+offset_x,149+offset_y,5,RED,'WIELKA BUCZYNOWA TURNIA'),                    # WIELKA BUCZYNOWA TURNIA
         Point(1100+500+offset_x,146+offset_y,5,RED,'MAŁA BUCZYNOWA'),                             # MAŁA BUCZYNOWA
         Point(1169+500+offset_x,109+offset_y,5,RED,'KRZYŻNE'),                                    # KRZYŻNE

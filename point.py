@@ -253,15 +253,19 @@ def add_point(offset_x = 0, offset_y = 0):
 
 
 def check_points(points, offset_x, offset_y, chosen_points):
+
     update_chosen_points = chosen_points
     for point in points:
-            if check_point_collision(point, offset_x, offset_y):
+            if check_point_collision(point, offset_x, offset_y) or point.checked:
                 draw_info(point, offset_x, offset_y)
                 pygame.draw.circle(WIN, point.color, (point.x + offset_x, point.y + offset_y), 10)
+
+
                 if len(update_chosen_points) < 2:
                     if pygame.mouse.get_pressed()[0]:
                         point.checked = True
-                        if point not in update_chosen_points: update_chosen_points.append(point)
+                        name = get_points_names([point.name])[0]
+                        if name not in update_chosen_points: update_chosen_points.append(name)
             if point.checked: 
                 point.radius = 10
                 point.color = PURPLE       

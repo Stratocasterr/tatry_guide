@@ -37,8 +37,8 @@ class GameView():
         self.points = []
         self.points_names = []
         self.points_namesPL = []
-        
         self.chosen_points = []
+        
 
         # path
         self.create_path = False
@@ -49,6 +49,7 @@ class GameView():
         # tools
         self.enter = False
         self.counter = 0
+        self.click_mode = False
 
        
         
@@ -95,7 +96,9 @@ class GameView():
         
 
         # draw and check points
-        self.chosen_points = check_points(self.points, self.map_x, self.map_y, self.chosen_points)
+        if self.click_mode: 
+            self.chosen_points = check_points(self.points, self.map_x, self.map_y, self.chosen_points)
+            if len(self.chosen_points)  == 2 : self.start, self.destination = self.chosen_points[0], self.chosen_points[1]
 
         # draw path
         self.create_path_for_me()
@@ -136,7 +139,9 @@ class GameView():
                 elif button[1] == 'draw_path_button':  button[0].allow = True 
                     
             
-
+                elif button[1] == 'point_button': 
+                    if not self.click_mode : self.click_mode = True
+                    else:  self.click_mode = False
 
 
 
@@ -144,25 +149,26 @@ class GameView():
                 # entering points
 
                 if button[1] == 'search_button' or button[1] == 'from_button' or button[1] == 'to_button':
-                    self.path = ''
-                    button[0].text = self.keyboard_input
-                    button[0].text_backing_color = SKY_BLUE
+                    if not self.click_mode:
+                        self.path = ''
+                        button[0].text = self.keyboard_input
+                        button[0].text_backing_color = SKY_BLUE
 
-                    
-                    if self.keyboard_input: 
-                        suggestions = find_name(mp_graph[2], self.keyboard_input)
-                        if suggestions: draw_suggestions(suggestions)
-
-                    if self.enter:
-                        if self.keyboard_input in mp_graph[2]: 
-                            button[0].text_backing_color = LIGHT_GREEN
-                            if button[1] == 'from_button' : self.start = self.keyboard_input
-                            elif button[1] == 'to_button' : self.destination = self.keyboard_input
-                        else : button[0].text_backing_color = RED
                         
-                        self.keyboard_input = ''
-                        button[0].allow = False
-                        self.enter = False
+                        if self.keyboard_input: 
+                            suggestions = find_name(mp_graph[2], self.keyboard_input)
+                            if suggestions: draw_suggestions(suggestions)
+
+                        if self.enter:
+                            if self.keyboard_input in mp_graph[2]: 
+                                button[0].text_backing_color = LIGHT_GREEN
+                                if button[1] == 'from_button' : self.start = self.keyboard_input
+                                elif button[1] == 'to_button' : self.destination = self.keyboard_input
+                            else : button[0].text_backing_color = RED
+                            
+                            self.keyboard_input = ''
+                            button[0].allow = False
+                            self.enter = False
             
                 elif button[1] == 'draw_path_button':
                     button[0].allow = False

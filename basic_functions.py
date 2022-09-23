@@ -127,7 +127,7 @@ def upstdn_array(array):
 
 def get_points_names(points):
     answer = []
-    
+    is_string = False
     name = ''
     pname = ''
 
@@ -151,6 +151,8 @@ def get_points_names(points):
         
         answer.append(name)
         name = ''
+
+        
     return answer
 
 def find_point(point_name, points):
@@ -247,3 +249,8 @@ def draw_suggestions(suggestions):
         
         text_rendering(sug, MENU_GREEN, OFF_WHITE, (180, 350+ offset_y,), BASIC_FONT)
         offset_y += 15
+
+
+
+def draw_details():
+    pass

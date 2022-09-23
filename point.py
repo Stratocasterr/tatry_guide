@@ -2,6 +2,7 @@ from ctypes.wintypes import POINT
 import pygame
 from colors import *
 from config import *
+from basic_functions import *
 
 class Point:
     def __init__(self,x,y,radius,color,name):
@@ -251,3 +252,19 @@ def add_point(offset_x = 0, offset_y = 0):
 
 
 
+def check_points(points, offset_x, offset_y, chosen_points):
+    update_chosen_points = chosen_points
+    for point in points:
+            if check_point_collision(point, offset_x, offset_y):
+                draw_info(point, offset_x, offset_y)
+                pygame.draw.circle(WIN, point.color, (point.x + offset_x, point.y + offset_y), 10)
+                if len(update_chosen_points) < 2:
+                    if pygame.mouse.get_pressed()[0]:
+                        point.checked = True
+                        if point not in update_chosen_points: update_chosen_points.append(point)
+            if point.checked: 
+                point.radius = 10
+                point.color = PURPLE       
+                    
+            point.draw_me(offset_x, offset_y)
+    return update_chosen_points

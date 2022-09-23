@@ -245,7 +245,7 @@ class Window:
 
             buttons.append([draw_path_button,'draw_path_button'])
 
-
+            ''' 
             if self.from_help_window:
                 close_help_from_button = Button(
                 6 * self.triangle_size,
@@ -271,7 +271,7 @@ class Window:
                 
             )
                 
-            
+            '''  
        
         return buttons
 

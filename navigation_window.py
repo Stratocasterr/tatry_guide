@@ -79,7 +79,7 @@ class Window:
             WIN.blit(FIND_YOUR_WAY,(0.9 * self.triangle_size, self.margin + 0.5 * self.triangle_size))
             WIN.blit(FROM,(0.2 * self.triangle_size, 4 * self.triangle_size))
             WIN.blit(TO,(0.45 * self.triangle_size, 5.2 * self.triangle_size))
-            WIN.blit(SEARCH,(0.45 * self.triangle_size, 6.2 * self.triangle_size))
+            
 
             if self.from_help_window: draw_help_info("from", 6 * self.triangle_size, self.margin + 2.3* self.triangle_size)
             if self.to_help_window: draw_help_info("to", 6 * self.triangle_size, self.margin + 3.3* self.triangle_size)
@@ -129,7 +129,7 @@ class Window:
             from_button = Button(
                 2.2 * self.triangle_size,
                 self.margin + 2.3* self.triangle_size,
-                2.5 * self.triangle_size,
+                2.9 * self.triangle_size,
                 0.5 * self.triangle_size,
                 '...',
                 MENU_GREEN,
@@ -142,10 +142,10 @@ class Window:
 
             
 
-            help_from_button = Button(
-                5.4 * self.triangle_size,
+            help_button = Button(
+                5.2 * self.triangle_size,
                 self.margin + 2.3* self.triangle_size,
-                0.5 * self.triangle_size,
+                1.1 * self.triangle_size,
                 0.5 * self.triangle_size,
                 '?',
                 WHITE,
@@ -154,13 +154,13 @@ class Window:
                 
             )
 
-            buttons.append([help_from_button,'help_from_button'])
+            buttons.append([help_button,'help_button'])
 
             # to
             to_button = Button(
                 2.2 * self.triangle_size,
                 self.margin + 3.3* self.triangle_size,
-                2.5 * self.triangle_size,
+                2.9 * self.triangle_size,
                 0.5 * self.triangle_size,
                 '...',
                 MENU_GREEN,
@@ -171,40 +171,9 @@ class Window:
 
             buttons.append([to_button,'to_button'])
 
-            
-
-            help_to_button = Button(
-                5.4 * self.triangle_size,
-                self.margin + 3.3* self.triangle_size,
-                0.5 * self.triangle_size,
-                0.5 * self.triangle_size,
-                '?',
-                WHITE,
-                SKY_BLUE,
-                SKY_BLUE
-                
-            )
-
-            buttons.append([help_to_button,'help_to_button'])
-
-            # search
-            search_button = Button(
-                2.2 * self.triangle_size,
-                self.margin + 4.3* self.triangle_size,
-                2.5 * self.triangle_size,
-                0.5 * self.triangle_size,
-                'type your place...',
-                MENU_GREEN,
-                WHITE,
-                SKY_BLUE
-                
-            )
-
-            buttons.append([search_button,'search_button'])
-
 
             draw_path_button = Button(
-                4.8 * self.triangle_size,
+                3.7 * self.triangle_size,
                 self.margin + 4.3* self.triangle_size,
                 1.1 * self.triangle_size,
                 0.5 * self.triangle_size,
@@ -217,34 +186,21 @@ class Window:
 
             buttons.append([draw_path_button,'draw_path_button'])
 
-            ''' 
-            if self.from_help_window:
-                close_help_from_button = Button(
-                6 * self.triangle_size,
-                self.margin + 2.3* self.triangle_size,
-                0.2 * self.triangle_size,
-                0.2 * self.triangle_size,
-                '?',
-                WHITE,
-                SKY_BLUE,
-                SKY_BLUE
-                
-            )
-            if self.to_help_window:
-                close_help_to_button = Button(
-                6 * self.triangle_size,
+         
+            point_button = Button(
+                5.2 * self.triangle_size,
                 self.margin + 3.3* self.triangle_size,
-                0.2 * self.triangle_size,
-                0.2 * self.triangle_size,
-                'X',
+                1.1 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'Click mode',
                 WHITE,
                 SKY_BLUE,
                 SKY_BLUE
                 
             )
-                
-            '''  
-       
+
+            buttons.append([point_button,'point_button'])
+
         return buttons
 
 

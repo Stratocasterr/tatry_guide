@@ -203,15 +203,26 @@ def draw_help_info(button, x, y):
 
 
 def animate_arrow(counter):
-# animate arrow
-    pygame.draw.polygon(WIN, LIGHT_GREEN, [(300, 327), (315, 339), (315, 315)])
+# animate arrowR
+    pygame.draw.polygon(WIN, LIGHT_GREEN, [(280, 327), (295, 339), (295, 315)])
     pygame.draw.rect(WIN,LIGHT_GREEN,
-                    pygame.Rect(315, 321, 20, 12))
+                    pygame.Rect(295, 321, 20, 12))
+
+# animate arrowL
+    pygame.draw.polygon(WIN, LIGHT_GREEN, [(145, 327), (130, 339), (130, 315)])
+    pygame.draw.rect(WIN,LIGHT_GREEN,
+                    pygame.Rect(110, 321, 20, 12))
 
     counter+=1
     if counter > 150:
+        # animate arrowR
         pygame.draw.rect(WIN,MENU_GREEN,
-                    pygame.Rect(300, 315, 35, 25))
+                    pygame.Rect(280, 315, 35, 25))
+
+        # animate arrowL
+        pygame.draw.rect(WIN,MENU_GREEN,
+                    pygame.Rect(110, 315, 40, 25))
+
         if counter == 200: counter = 0
     return counter
 
@@ -226,11 +237,13 @@ def find_name(points_names, input_name):
 
 def draw_suggestions(suggestions):
     print(suggestions)
+    if len(suggestions) > 10 : suggestions = suggestions[:10]
     pygame.draw.rect(WIN, OFF_WHITE,
-                    pygame.Rect(400,100,100,400))
+                    pygame.Rect(110,345,145,len(suggestions) * 15))
 
     offset_y = 0
     for sug in suggestions:
-        offset_y += 15
         
-        text_rendering(sug, MENU_GREEN, OFF_WHITE, (400, 100+ offset_y,), BASIC_FONT)
+        
+        text_rendering(sug, MENU_GREEN, OFF_WHITE, (180, 350+ offset_y,), BASIC_FONT)
+        offset_y += 15

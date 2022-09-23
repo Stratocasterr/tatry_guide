@@ -60,8 +60,9 @@ class GameView():
             self.buttons = Window(self.actual_window).add_buttons()
             self.points = add_point()
             self.points_names = get_points_names(self.points)
-            #print(find_name(mp_graph[2], 'sk'))
-            
+            self.destination = ''
+            self.start = ''
+
         self.append_tools = False
 
     def create_path_for_me(self):
@@ -120,32 +121,18 @@ class GameView():
                     self.actual_window = 'sidebar'
                     self.append_tools = True
                     
-
-
-
                 elif button[1] == 'from_button': 
                     button[0].allow = True
                     self.start = ''
 
-                elif button[1] == 'help_from_button':
-                    window.from_help_window = True
+                elif button[1] == 'help_button':
+                    pass
                     
 
-                
-  
                 elif button[1] == 'to_button': 
                     button[0].allow = True
                     self.destination = ''
     
-
-                elif button[1] == 'help_to_button':
-                    pass
-
- 
-
-                # elif button[1] == 'search_button': button[0].allow = True 
-                    
-
                 elif button[1] == 'draw_path_button':  button[0].allow = True 
                     
             

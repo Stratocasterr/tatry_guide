@@ -23,7 +23,6 @@ CLOCK = pygame.time.Clock()
 class GameView():
     def __init__(self):
         self.game_is_running = True
-        
         self.map_x = 0
         self.map_y = 0
         self.append_tools = True
@@ -38,7 +37,6 @@ class GameView():
         self.points_names = []
         self.avaliable_points = []
         self.chosen_points = []
-        
 
         # path
         self.create_path = False
@@ -53,10 +51,6 @@ class GameView():
         self.click_mode = False
 
        
-        
-        
-        
-       
     def generate_tools(self):
         if self.append_tools:
             self.buttons = Window(self.actual_window).add_buttons()
@@ -68,6 +62,7 @@ class GameView():
             self.path = []
             self.pretty_path = []
             self.keyboard_input = ''
+            self.create_path = False
             self.chosen_points = []
 
         self.append_tools = False
@@ -75,13 +70,11 @@ class GameView():
     def create_path_for_me(self):
  
             if self.path and self.start and self.destination: 
-                
                 draw_the_line(self.path, self.points, self.points_names, self.map_x, self.map_y)
                 
         
     def game_loop(self):
         while self.game_is_running:
-            
             self.game_draw()
             self.handle_events()
             self.sterowanie()
@@ -89,6 +82,7 @@ class GameView():
             
     def game_draw(self):
         # draw map
+        print(self.create_path)
         WIN.blit(LT_MAP,(self.map_x,self.map_y))
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
@@ -97,6 +91,7 @@ class GameView():
         # draw and check points
         if self.click_mode: 
             self.chosen_points = check_points(self.points, self.map_x, self.map_y, self.chosen_points)
+            
             if len(self.chosen_points)  == 2 : self.start, self.destination = self.chosen_points[0], self.chosen_points[1]
 
         # draw path
@@ -134,16 +129,15 @@ class GameView():
                 elif button[1] == 'help_button':
                     pass
                     
-
                 elif button[1] == 'to_button': 
                     button[0].allow = True
                     self.destination = ''
     
                 elif button[1] == 'draw_path_button':  button[0].allow = True 
                     
-            
                 elif button[1] == 'point_button':
                     self.append_tools = True
+
                     if not self.click_mode : 
                         self.click_mode = True
                         
@@ -156,21 +150,24 @@ class GameView():
                 # entering points
 
                 if button[1] == 'search_button' or button[1] == 'from_button' or button[1] == 'to_button':
+                    
                     if not self.click_mode:
                         self.path = ''
                         button[0].text = self.keyboard_input
                         button[0].text_backing_color = SKY_BLUE
-
-                        
+           
                         if self.keyboard_input: 
                             suggestions = find_name(mp_graph[2], self.keyboard_input)
+
                             if suggestions: draw_suggestions(suggestions)
 
                         if self.enter:
+
                             if self.keyboard_input in mp_graph[2]: 
                                 button[0].text_backing_color = LIGHT_GREEN
                                 if button[1] == 'from_button' : self.start = self.keyboard_input
                                 elif button[1] == 'to_button' : self.destination = self.keyboard_input
+                            
                             else : button[0].text_backing_color = RED
                             
                             self.keyboard_input = ''
@@ -180,31 +177,25 @@ class GameView():
                 elif button[1] == 'draw_path_button':
                     button[0].allow = False
                     
-                    if self.start and self.destination:
-                        self.counter+=1
-                        print(self.counter)
+                    if self.start and self.destination and self.create_path == False:
                         self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
                         self.pretty_path = prettier_path(self.path, CLvertices_list, self.available_points)
-                   
-                
+                        self.create_path = True
+                           
             if len(button) == 2: button[0].draw_the_button()
+            
             else:  
                 button[0].draw_the_button()
                 button[2].draw_me()
 
-        
         pygame.display.update()
-
 
     def handle_events(self):
         
-        for event in pygame.event.get():
-            
+        for event in pygame.event.get():  
+
             if event.type == pygame.QUIT:
                 self.game_is_running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pass
-                #print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             if event.type == pygame.KEYDOWN:
 
@@ -292,18 +283,14 @@ class GameView():
                     self.enter = True
 
     def sterowanie(self):
-        
+
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
             if self.map_x<0: self.map_x+=1
-
         if pressed_keys[pygame.K_RIGHT]:
             if self.map_x>(-LT_MAP_SIZE[0]-RT_MAP_SIZE[0]+SCREEN_LENGTH): self.map_x-=1
-
-
         if pressed_keys[pygame.K_UP]:
             if self.map_y<0: self.map_y+=1
-
         if pressed_keys[pygame.K_DOWN]:
             if self.map_y>(-LT_MAP_SIZE[1]-LB_MAP_SIZE[1]+SCREEN_HEIGHT): self.map_y-=1
 

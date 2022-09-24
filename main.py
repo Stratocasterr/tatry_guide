@@ -74,7 +74,6 @@ class GameView():
 
         
     def game_loop(self):
-
         while self.game_is_running:
             
             self.game_draw()
@@ -82,19 +81,13 @@ class GameView():
             self.sterowanie()
             self.generate_tools()
             
-            
-
     def game_draw(self):
         # draw map
-       
         WIN.blit(LT_MAP,(self.map_x,self.map_y))
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
         WIN.blit(RB_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y+RT_MAP_SIZE[1]))
         
-        
-        
-
         # draw and check points
         if self.click_mode: 
             self.chosen_points = check_points(self.points, self.map_x, self.map_y, self.chosen_points)
@@ -116,6 +109,7 @@ class GameView():
             
             if button[0].active_button:
                 
+
                 if button[1] == 'show_side_menu_button':
                     self.actual_window = 'side menu'
                     self.append_tools = True
@@ -142,7 +136,7 @@ class GameView():
                 elif button[1] == 'point_button': 
                     if not self.click_mode : self.click_mode = True
                     else:  self.click_mode = False
-
+                    
 
 
             if button[0].allow:
@@ -194,7 +188,7 @@ class GameView():
                 self.game_is_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
-                print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
+                #print(pygame.mouse.get_pos()[0],pygame.mouse.get_pos()[1])
 
             if event.type == pygame.KEYDOWN:
 

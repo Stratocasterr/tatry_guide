@@ -193,7 +193,7 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(909+offset_x,137+offset_y,5,BLACK,'SCZ1d'),
         Point(923+offset_x,159+offset_y,5,BLACK,'SCZ1e'),
         Point(942+offset_x,180+offset_y,5,BLACK,'SCZ1f'),
-        Point(956+offset_x,236+offset_y,5,BLACK,'SCZ1g'),
+        # Point(956+offset_x,236+offset_y,5,BLACK,'SCZ1g'),
         Point(921+offset_x,270+offset_y,5,BLACK,'SCZ1h'),
         
         #SZLAK NIEBIESKI NA WSCHOD OD KASPROWEGO

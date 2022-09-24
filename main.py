@@ -82,7 +82,7 @@ class GameView():
             
     def game_draw(self):
         # draw map
-        print(self.create_path)
+        
         WIN.blit(LT_MAP,(self.map_x,self.map_y))
         WIN.blit(LB_MAP,(self.map_x,self.map_y+LT_MAP_SIZE[1]))
         WIN.blit(RT_MAP,(self.map_x+LT_MAP_SIZE[0],self.map_y))
@@ -298,7 +298,7 @@ class GameView():
 
 def main():
     answer = [True, True]
-    start_menu = False
+    start_menu = True
 
     while start_menu:
         answer = starting_menu()

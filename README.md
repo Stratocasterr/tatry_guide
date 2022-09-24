@@ -13,3 +13,7 @@ This program to find the shortest path between two places, uses the dijkstra alg
 Read about the dijkstra algorithm: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 Here you can see how my program works, enjoy!
+
+
+https://user-images.githubusercontent.com/101999487/192111154-b67ca907-e875-41c1-8c53-dc529a5a2617.mp4
+

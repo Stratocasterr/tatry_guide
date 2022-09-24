@@ -240,7 +240,7 @@ weights_matrix=np.array([
 
 
 
-vertices_list=[
+CLvertices_list=[
 
     'GORYCZKOWA CZUBA',
     'GORYCZKOWA PRZEŁĘCZ ŚWIŃSKA',
@@ -373,7 +373,7 @@ weights_matrix = np.array(
 
 vertices_list=['1','2','3','4','5']
 ''' 
-vertices_list = get_points_names(vertices_list)
+vertices_list = get_points_names(CLvertices_list)
 
 map_graph=[
     adjacency_matrix,

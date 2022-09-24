@@ -175,9 +175,7 @@ def draw_the_line(path, points, points_names, offset_x, offset_y):
         if i < len(cords) - 1:
            
             pygame.draw.line(WIN, PURPLE, cords[i], cords[i+1], 8)
-
                 
-
 def draw_info(point, offset_x, offset_y):
     pygame.draw.rect(WIN, OFF_WHITE, pygame.Rect(
         point.x - 2 * point.radius + offset_x,
@@ -185,7 +183,6 @@ def draw_info(point, offset_x, offset_y):
         8 * len(point.name), 5 * point.radius))
 
     text_rendering(point.name, MENU_GREEN, OFF_WHITE, (point.x + offset_x - 2 * point.radius + (8 * len(point.name)) / 2, point.y + offset_y + 5 * point.radius + (5 * point.radius) / 2), BASIC_FONT)
-
 
 def check_point_collision(point, offset_x, offset_y):
     rect = pygame.Rect(point.x + offset_x, point.y + offset_y, 3 * point.radius, 3 *  point.radius)
@@ -203,31 +200,29 @@ def draw_help_info(button, x, y):
     pygame.draw.rect(WIN, OFF_WHITE,
                     pygame.Rect(x + 600, y, 100,100))
 
-
 def animate_arrow(counter):
 # animate arrowR
-    pygame.draw.polygon(WIN, LIGHT_GREEN, [(280, 327), (295, 339), (295, 315)])
+    pygame.draw.polygon(WIN, LIGHT_GREEN, [(295, 327), (310, 339), (310, 315)])
     pygame.draw.rect(WIN,LIGHT_GREEN,
-                    pygame.Rect(295, 321, 20, 12))
+                    pygame.Rect(310, 321, 20, 12))
 
 # animate arrowL
-    pygame.draw.polygon(WIN, LIGHT_GREEN, [(145, 327), (130, 339), (130, 315)])
+    pygame.draw.polygon(WIN, LIGHT_GREEN, [(160, 327), (145, 339), (145, 315)])
     pygame.draw.rect(WIN,LIGHT_GREEN,
-                    pygame.Rect(110, 321, 20, 12))
+                    pygame.Rect(125, 321, 20, 12))
 
     counter+=1
     if counter > 150:
         # animate arrowR
         pygame.draw.rect(WIN,MENU_GREEN,
-                    pygame.Rect(280, 315, 35, 25))
+                    pygame.Rect(295, 315, 35, 25))
 
         # animate arrowL
         pygame.draw.rect(WIN,MENU_GREEN,
-                    pygame.Rect(110, 315, 40, 25))
+                    pygame.Rect(125, 315, 40, 25))
 
         if counter == 200: counter = 0
     return counter
-
 
 def find_name(points_names, input_name):
     suggestions = []
@@ -249,16 +244,32 @@ def draw_suggestions(suggestions):
         offset_y += 15
 
 
+def prettier_path(path, caps_lock_points, available_points):
+    pretty_path = [[],path[1]]
+    
+    for step in path[0]:
+        pretty_path[0].append(convert(caps_lock_points[available_points.index(step)]))
+
+    return pretty_path
+
+def convert(string):
+    string = string.lower()
+    for s in range(len(string)-1): 
+        if string[s] == " ": string = string[:s+1] + string[s+1].upper() + string[s+2:]
+    string = string[0].upper() + string[1:]
+    return string
+
+
 
 def draw_details(path):
     print(len(path[0]))
     height = 0
-    if len(path[0]) < 5 : height = len(path[0]) * 26
+    if len(path[0]) <= 5 : height = len(path[0]) * 26
     else: height = len(path[0]) * 17
     pygame.draw.rect(WIN, OFF_WHITE,
-                    pygame.Rect(25 ,315 ,150,height))
+                    pygame.Rect(10 ,315 ,180,height))
 
-    text_rendering("Distance " + "     m", MENU_GREEN, OFF_WHITE, (100, 330), CRAZY_FONT)
+    text_rendering("Distance " + "      m", MENU_GREEN, OFF_WHITE, (100, 330), CRAZY_FONT)
     text_rendering(": " + str(path[1]), MENU_GREEN, OFF_WHITE, (118, 330), BASIC_FONT)
     offset_y = 0
     for index,step in enumerate(path[0]):

@@ -158,7 +158,7 @@ class Window:
             )
 
             draw_path_button = Button(
-                3.7 * self.triangle_size,
+                4 * self.triangle_size,
                 self.margin + 4.3* self.triangle_size,
                 1.1 * self.triangle_size,
                 0.5 * self.triangle_size,
@@ -180,7 +180,7 @@ class Window:
             )
 
             reset_button =  Button(
-                3.7 * self.triangle_size,
+                4 * self.triangle_size,
                 self.margin + 5.3* self.triangle_size,
                 1.1 * self.triangle_size,
                 0.5 * self.triangle_size,

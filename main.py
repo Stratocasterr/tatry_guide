@@ -16,7 +16,7 @@ import sys
 sys.path.append("C:/Users/kacpe/Visual Studio Projects/tatry_guide/Dijkstra's algorithm")
 import algorithm
 
-from graph_map import map_graph as mp_graph
+from graph_map import CLvertices_list, map_graph as mp_graph
 
 CLOCK = pygame.time.Clock()
 
@@ -36,7 +36,7 @@ class GameView():
         # points
         self.points = []
         self.points_names = []
-        self.points_namesPL = []
+        self.avaliable_points = []
         self.chosen_points = []
         
 
@@ -45,6 +45,7 @@ class GameView():
         self.path = []
         self.start = ''
         self.destination = ''
+        self.pretty_path = []
 
         # tools
         self.enter = False
@@ -61,9 +62,11 @@ class GameView():
             self.buttons = Window(self.actual_window).add_buttons()
             self.points = add_point()
             self.points_names = get_points_names(self.points)
+            self.available_points = get_points_names(CLvertices_list)
             self.destination = ''
             self.start = ''
-            self.path = ''
+            self.path = []
+            self.pretty_path = []
             self.keyboard_input = ''
             self.chosen_points = []
 
@@ -104,7 +107,7 @@ class GameView():
         window.draw_me()
 
         # draw details
-        if self.path: draw_details(self.path)
+        if self.path: draw_details(self.pretty_path)
 
         # animate arrow
         if self.start and self.destination and not self.path: self.counter = animate_arrow(self.counter)
@@ -177,9 +180,11 @@ class GameView():
                 elif button[1] == 'draw_path_button':
                     button[0].allow = False
                     
-                    if self.start and self.destination: 
+                    if self.start and self.destination:
+                        self.counter+=1
+                        print(self.counter)
                         self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
-
+                        self.pretty_path = prettier_path(self.path, CLvertices_list, self.available_points)
                    
                 
             if len(button) == 2: button[0].draw_the_button()

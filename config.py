@@ -1,3 +1,4 @@
+from tkinter import font
 import pygame
 SCREEN_HEIGHT = 900
 SCREEN_LENGTH = 1700
@@ -6,6 +7,7 @@ SCREEN_LENGTH = 1700
 pygame.font.init()
 BASIC_FONT = pygame.font.Font('fonts/freesansbold.ttf', 10)
 
+CRAZY_FONT = pygame.font.Font('fonts/FlappyBirdy.ttf',20)
 WIN = pygame.display.set_mode((SCREEN_LENGTH, SCREEN_HEIGHT))
 
 

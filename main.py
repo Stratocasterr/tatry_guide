@@ -63,6 +63,9 @@ class GameView():
             self.points_names = get_points_names(self.points)
             self.destination = ''
             self.start = ''
+            self.path = ''
+            self.keyboard_input = ''
+            self.chosen_points = []
 
         self.append_tools = False
 
@@ -71,7 +74,7 @@ class GameView():
             if self.path and self.start and self.destination: 
                 
                 draw_the_line(self.path, self.points, self.points_names, self.map_x, self.map_y)
-
+                
         
     def game_loop(self):
         while self.game_is_running:
@@ -100,8 +103,11 @@ class GameView():
         window =  Window(self.actual_window)
         window.draw_me()
 
+        # draw details
+        if self.path: draw_details(self.path)
+
         # animate arrow
-        if self.start and self.destination: self.counter = animate_arrow(self.counter)
+        if self.start and self.destination and not self.path: self.counter = animate_arrow(self.counter)
         
         # draw actual window's buttons
         
@@ -133,11 +139,15 @@ class GameView():
                 elif button[1] == 'draw_path_button':  button[0].allow = True 
                     
             
-                elif button[1] == 'point_button': 
-                    if not self.click_mode : self.click_mode = True
+                elif button[1] == 'point_button':
+                    self.append_tools = True
+                    if not self.click_mode : 
+                        self.click_mode = True
+                        
                     else:  self.click_mode = False
                     
-
+                elif button[1] == 'reset_button': self.append_tools = True
+                    
 
             if button[0].allow:
                 # entering points
@@ -169,6 +179,7 @@ class GameView():
                     
                     if self.start and self.destination: 
                         self.path = algorithm.the_shortest_path(self.start, self.destination, mp_graph)
+
                    
                 
             if len(button) == 2: button[0].draw_the_button()

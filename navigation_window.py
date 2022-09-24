@@ -1,3 +1,4 @@
+from cgitb import reset
 from fileinput import close
 from re import S, search
 import pygame
@@ -121,10 +122,7 @@ class Window:
                     (self.triangle_size/2 +  self.triangle_size // 10  +  6 * self.triangle_size, (SCREEN_HEIGHT - (-0.5 * self.triangle_size + self.margin)) / 2 + self.triangle_size // 2)
             ],
             'triangle', 0, MENU_GREEN)
-            
-            buttons.append([hide_side_menu_button, 'hide_side_menu_button', hide_side_menu_button_arrow_icon])
 
-            # from
 
             from_button = Button(
                 2.2 * self.triangle_size,
@@ -135,13 +133,8 @@ class Window:
                 MENU_GREEN,
                 WHITE,
                 SKY_BLUE
-                
             )
-
-            buttons.append([from_button,'from_button'])
-
-            
-
+      
             help_button = Button(
                 5.2 * self.triangle_size,
                 self.margin + 2.3* self.triangle_size,
@@ -150,13 +143,9 @@ class Window:
                 '?',
                 WHITE,
                 SKY_BLUE,
-                SKY_BLUE
-                
+                SKY_BLUE              
             )
 
-            buttons.append([help_button,'help_button'])
-
-            # to
             to_button = Button(
                 2.2 * self.triangle_size,
                 self.margin + 3.3* self.triangle_size,
@@ -165,12 +154,8 @@ class Window:
                 '...',
                 MENU_GREEN,
                 WHITE,
-                SKY_BLUE
-                
+                SKY_BLUE          
             )
-
-            buttons.append([to_button,'to_button'])
-
 
             draw_path_button = Button(
                 3.7 * self.triangle_size,
@@ -180,13 +165,9 @@ class Window:
                 'Draw path',
                 WHITE,
                 SKY_BLUE,
-                SKY_BLUE
-            
+                SKY_BLUE          
             )
-
-            buttons.append([draw_path_button,'draw_path_button'])
-
-         
+    
             point_button = Button(
                 5.2 * self.triangle_size,
                 self.margin + 3.3* self.triangle_size,
@@ -195,11 +176,27 @@ class Window:
                 'Click mode',
                 WHITE,
                 SKY_BLUE,
-                SKY_BLUE
-                
+                SKY_BLUE    
             )
 
+            reset_button =  Button(
+                3.7 * self.triangle_size,
+                self.margin + 5.3* self.triangle_size,
+                1.1 * self.triangle_size,
+                0.5 * self.triangle_size,
+                'Reset path',
+                WHITE,
+                RED,
+                SKY_BLUE  
+            )
+
+            buttons.append([draw_path_button,'draw_path_button'])
             buttons.append([point_button,'point_button'])
+            buttons.append([reset_button,'reset_button'])
+            buttons.append([to_button,'to_button'])
+            buttons.append([help_button,'help_button'])
+            buttons.append([from_button,'from_button'])
+            buttons.append([hide_side_menu_button, 'hide_side_menu_button', hide_side_menu_button_arrow_icon])
 
         return buttons
 

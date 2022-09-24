@@ -133,7 +133,7 @@ def get_points_names(points):
 
     for point in points:
         
-        #if not (any(char.isdigit() for char in point.name)):
+        #
         if type(point) == str: pname = point
         else: pname = point.name  
         for letter in pname:
@@ -233,24 +233,34 @@ def find_name(points_names, input_name):
     suggestions = []
     if len(input_name) > 0:
         for point in points_names:
-            if point[:len(input_name)] == input_name: suggestions.append(point)
+            if point[:len(input_name)] == input_name:
+                if not (any(char.isdigit() for char in point)): suggestions.append(point)
+                 
     return suggestions
 
 
 def draw_suggestions(suggestions):
-    print(suggestions)
-    if len(suggestions) > 10 : suggestions = suggestions[:10]
     pygame.draw.rect(WIN, OFF_WHITE,
                     pygame.Rect(110,345,145,len(suggestions) * 15))
 
     offset_y = 0
     for sug in suggestions:
-        
-        
         text_rendering(sug, MENU_GREEN, OFF_WHITE, (180, 350+ offset_y,), BASIC_FONT)
         offset_y += 15
 
 
 
-def draw_details():
-    pass
+def draw_details(path):
+    print(len(path[0]))
+    height = 0
+    if len(path[0]) < 5 : height = len(path[0]) * 26
+    else: height = len(path[0]) * 17
+    pygame.draw.rect(WIN, OFF_WHITE,
+                    pygame.Rect(25 ,315 ,150,height))
+
+    text_rendering("Distance " + "     m", MENU_GREEN, OFF_WHITE, (100, 330), CRAZY_FONT)
+    text_rendering(": " + str(path[1]), MENU_GREEN, OFF_WHITE, (118, 330), BASIC_FONT)
+    offset_y = 0
+    for index,step in enumerate(path[0]):
+        text_rendering(str(index + 1) + ". " + step, MENU_GREEN, OFF_WHITE, (100, 345+ offset_y,), BASIC_FONT)
+        offset_y += 15

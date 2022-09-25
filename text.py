@@ -3,7 +3,9 @@ from config import *
 
 
 class Text:
-    def __init__(self, text, text_point, font_type, font_color, text_background_color, size):
+    def __init__(
+        self, text, text_point, font_type, font_color, text_background_color, size
+    ):
         self.text = text
         self.text_point = text_point
 

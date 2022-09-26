@@ -222,6 +222,7 @@ class GameView:
             if event.type == pygame.QUIT:
                 self.game_is_running = False
 
+           
             if event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_0:
@@ -308,7 +309,9 @@ class GameView:
                     self.enter = True
 
     def sterowanie(self):
+        pass
 
+         
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_LEFT]:
             if self.map_x < 0:
@@ -322,11 +325,12 @@ class GameView:
         if pressed_keys[pygame.K_DOWN]:
             if self.map_y > (-LT_MAP_SIZE[1] - LB_MAP_SIZE[1] + SCREEN_HEIGHT):
                 self.map_y -= 1
-
+           
 
 def main():
     answer = [True, True]
-    start_menu = True
+    start_menu = False
+    
 
     while start_menu:
         answer = starting_menu()

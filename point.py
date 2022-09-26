@@ -56,7 +56,7 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(931+offset_x,313+offset_y,5,RED,'ŚWINICKA PRZEŁĘCZ'),                               # ŚWINICKA PRZEŁĘCZ
         Point(814+offset_x,524+offset_y,5,RED,'VALENTYNKOVA KOPA'),                               # VALENTYNKOVA KOPA
         Point(975+offset_x,530+offset_y,5,RED,'WALENTYNKOWY WIERCH'),                             # WALENTYNKOWY WIERCH
-        Point(1010+offset_x,440+offset_y,5,RED,'VALENTYNKOWY PRZEŁĘCZ'),                          # VALENTYNKOWY PRZEŁĘCZ
+        Point(1010+offset_x,440+offset_y,5,RED,'WALENTYNKOWA PRZEŁĘCZ'),                          # VALENTYNKOWY PRZEŁĘCZ
         Point(1023+offset_x,364+offset_y,5,RED,'ŚWINICA'),                                        # ŚWINICA
         Point(1040+offset_x,221+offset_y,5,RED,'ZADNI STAW GĄSIENNICOWY'),                        # ZADNI STAW GĄSIENNICOWY
         Point(1012+offset_x,135+offset_y,5,RED,'DŁUGI STAW'),                                     # DŁUGI STAW
@@ -70,6 +70,7 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(1276+offset_x,350+offset_y,5,RED,'ZMARZŁA TURNIA'),                                 # ZMARZŁA TURNIA
         Point(1292+offset_x,352+offset_y,5,RED,'KOZIA PRZEŁĘCZ'),                                 # KOZIA PRZEŁĘCZ
         Point(1353+offset_x,393+offset_y,5,RED,'KOZI WIERCH'),                                    # KOZI WIERCH
+        Point(1210+offset_x,443+offset_y,5,RED,'SCHODKI'),                                         # SCHODKI
         Point(1439+offset_x,327+offset_y,5,RED,'PRZEŁĘCZ NAD BUCZYNOWĄ DOLINĄ'),                  # PRZEŁĘCZ NAD BUCZYNOWĄ DOLINĄ
         Point(1430+offset_x,276+offset_y,5,RED,'ZADNIA SIECZKOWA PRZEŁĘCZ'),                      # ZADNIA SIECZKOWA PRZEŁĘCZ
         Point(1415+offset_x,221+offset_y,5,RED,'ZADNI GRANAT'),                                   # ZADNI GRANAT
@@ -136,7 +137,7 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(1608+700+offset_x,413+600+offset_y,5,RED,'OWCZA PRZEŁĘCZ'),                         # OWCZA PRZEŁĘCZ
         Point(1615+700+offset_x,378+600+offset_y,5,RED,'NIŻNI ŻABI SZCZYT'),                      # NIŻNI ŻABI SZCZYT
         Point(1644+700+offset_x,309+600+offset_y,5,RED,'ŻABIA CZUBA'),                            # ŻABIA CZUBA
-        Point(1360+700+offset_x,439+600+offset_y,5,RED,'DROGA CZERWONEGO SZLAKU OKA'),            # DROGA CZERWONEGO SZLAKU Z MORSKIEGO OKA
+        Point(1360+700+offset_x,439+600+offset_y,5,RED,'DROGA CZERWONEGO SZLAKU Z OKA'),          # DROGA CZERWONEGO SZLAKU Z MORSKIEGO OKA
         Point(1645+700+offset_x,836+700+offset_y,5,RED,'CHATA POD RYSAMI'),                       # CHATA POD RYSAMI
         Point(883+500+offset_x,66+offset_y,5,RED,'ŻÓŁTA PRZEŁĘCZ'),                               # ŻÓŁTA PRZEŁĘCZ
         Point(911+500+offset_x,105+offset_y,5,RED,'WIERCH POD FAJKI'),                            # WIERCH POD FAJKI
@@ -246,6 +247,80 @@ def add_point(offset_x = 0, offset_y = 0):
         Point(1278+offset_x,272+offset_y,5,ORANGE,'SZO2b'),
         Point(1250+offset_x,204+offset_y,5,ORANGE,'SZO2c'),
         
+
+        # SZLAK NIEBIESKI NA POŁUDNIE OD ZAWRATU
+        Point(1166+offset_x,396+offset_y,5,BLUE,'SZNB3a'),
+        Point(1192+offset_x,433+offset_y,5,BLUE,'SZNB3b'),
+        Point(1174+offset_x,466+offset_y,5,BLUE,'SZNB3c'),
+        Point(1191+offset_x,507+offset_y,5,BLUE,'SZNB3d'),
+        Point(1204+offset_x,577+offset_y,5,BLUE,'SZNB3e'),
+        Point(1268+offset_x,606+offset_y,5,BLUE,'SZNB3f'),
+        Point(1337+offset_x,612+offset_y,5,BLUE,'SZNB3g'),
+        Point(1465+offset_x,589+offset_y,5,BLUE,'SZNB3h'),
+        Point(1543+offset_x,537+offset_y,5,BLUE,'SZNB3i'),
+        Point(1588+offset_x,543+offset_y,5,BLUE,'SZNB3j'),
+        Point(1628+offset_x,553+offset_y,5,BLUE,'SZNB3k'),
+        Point(1682+offset_x,518+offset_y,5,BLUE,'SZNB3l'),
+
+        # ŚCIEŻKA Z NB3 DO GŁADKIEJ PRZEŁĘCZY
+
+        Point(1235+offset_x,638+offset_y,5,BROWN,'SCB1a'),
+        Point(1194+offset_x,638+offset_y,5,BROWN,'SCB1b'),
+        Point(1164+offset_x,659+offset_y,5,BROWN,'SCB1c'),
+        Point(1102+offset_x,634+offset_y,5,BROWN,'SCB1d'),
+        Point(1048+offset_x,604+offset_y,5,BROWN,'SCB1e'),
+        Point(1001+offset_x,555+offset_y,5,BROWN,'SCB1f'),
+        Point(1094+offset_x,591+offset_y,5,BROWN,'SCB1g'),
+
+
+        # ŻÓŁTY SZLAK NA POŁUDNIE OD KOZIEJ PRZEŁĘCZY
+
+        Point(1284+offset_x,388+offset_y,5,ORANGE,'SZO3a'),
+        Point(1287+offset_x,430+offset_y,5,ORANGE,'SZO3b'),
+        Point(1275+offset_x,480+offset_y,5,ORANGE,'SZO3c'),
+        Point(1279+offset_x,525+offset_y,5,ORANGE,'SZO3d'),
+        Point(1317+offset_x,590+offset_y,5,ORANGE,'SZO3e'),
+        Point(1379+offset_x,617+offset_y,5,ORANGE,'SZO3f'),
+        Point(1389+offset_x,649+offset_y,5,ORANGE,'SZO3g'),
+        Point(1361+offset_x,681+offset_y,5,ORANGE,'SZO3h'),
+        Point(1409+offset_x,732+offset_y,5,ORANGE,'SZO3i'),
+        Point(1443+offset_x,813+offset_y,5,ORANGE,'SZO3j'),
+        Point(1470+offset_x,840+offset_y,5,ORANGE,'SZO3k'),
+        Point(1524+offset_x,870+offset_y,5,ORANGE,'SZO3l'),
+        Point(1559+offset_x,881+offset_y,5,ORANGE,'SZO3m'),
+        
+        # ŻÓŁTY SZLAK SZPIGLAS - MORSKIE OKO
+        Point(965 + 700 + offset_x,518 + 400 + offset_y,5,ORANGE,'SZO4a'),
+        Point(923 + 700 + offset_x,555 + 400 + offset_y,5,ORANGE,'SZO4b'),
+        Point(977 + 700 + offset_x,548 + 400 + offset_y,5,ORANGE,'SZO4c'),
+        Point(964 + 700 + offset_x,566 + 400 + offset_y,5,ORANGE,'SZO4d'),
+        Point(1066 + 700 + offset_x,523 + 400 + offset_y,5,ORANGE,'SZO4e'),
+        Point(1116 + 700 + offset_x,494 + 400 + offset_y,5,ORANGE,'SZO4f'),
+        Point(1177 + 700 + offset_x,481 + 400 + offset_y,5,ORANGE,'SZO4g'),
+        Point(1140 + 700 + offset_x,553 + 400 + offset_y,5,ORANGE,'SZO4h'),
+        Point(1232 + 700 + offset_x,557 + 400 + offset_y,5,ORANGE,'SZO4i'),
+        Point(1320 + 700 + offset_x,431 + 400 + offset_y,5,ORANGE,'SZO4j'),
+        Point(1363 + 700 + offset_x,427 + 400 + offset_y,5,ORANGE,'SZO4k'),
+
+
+
+
+        # ZIELONY SZLAK DOLINA ROZTOKI
+
+        Point(1608 + offset_x,517+ offset_y,5,GREEN,'SZ3a'),
+
+
+        # CZERWONY SZLAK WZDŁUŻ MORSKIEGO OKA
+
+        Point(1482 + 500 + offset_x,782 + 200 + offset_y,5,RED,'MOa'),
+        Point(1523 + 500 + offset_x,684 + 200 + offset_y,5,RED,'MOb'),
+        Point(1551 + 500 + offset_x,649 + 200 + offset_y,5,RED,'MOc'),
+        Point(1626 + 500 + offset_x,685 + 200 + offset_y,5,RED,'MOd'),
+        Point(1630 + 500 + offset_x,729 + 200 + offset_y,5,RED,'MOe'),
+        Point(1601 + 500 + offset_x,803 + 200 + offset_y,5,RED,'MOf'),
+        Point(1586 + 500 + offset_x,831 + 200 + offset_y,5,RED,'MOg'),
+        Point(1500 + 500 + offset_x,821 + 200 + offset_y,5,RED,'MOh'),
+       
 
     ]
     return points
